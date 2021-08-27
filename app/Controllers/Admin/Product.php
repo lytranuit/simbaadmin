@@ -18,7 +18,6 @@ class Product extends BaseController
         if (isset($_POST['dangtin'])) {
 
             $Product_model = model("ProductModel");
-            $ProductPet_model = model("ProductPetModel");
             $ProductUnit_model = model("ProductUnitModel");
             $ProductRelated_model = model("ProductRelatedModel");
             $Product_category_model = model("ProductCategoryModel");
@@ -44,16 +43,7 @@ class Product extends BaseController
             // die();
             $obj = $Product_model->create_object($data);
             $Product_model->update($id, $obj);
-            /* Update Pet */
-            $data_up = $ProductPet_model->create_object($data_pet);
 
-            $check =  $ProductPet_model->where(array('code' => $code))->first();
-            if (empty($check)) {
-                //Update
-                $ProductPet_model->insert($data_up);
-            } else {
-                $ProductPet_model->where('code', $code)->set($data_up)->update();
-            }
 
             /* CATEGORY */
             $related_new = array();
