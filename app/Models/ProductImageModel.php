@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 
 class ProductImageModel extends Model
 {
-    protected $table      = 'pet_product_image';
+    protected $table      = 'new_product_image';
     protected $primaryKey = 'id';
 
     protected $returnType     = 'array';

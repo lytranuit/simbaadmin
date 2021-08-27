@@ -156,7 +156,7 @@ class Product extends BaseController
             // print_r($tin);
             // die();
             /*Releated*/
-            $product_related = $Product_related_model->where(array('product_id' => $id))->findAll();
+            // $product_related = $Product_related_model->where(array('product_id' => $id))->findAll();
 
             /*category*/
             $category = $Product_category_model->where(array('product_id' => $id))->findAll();
@@ -173,13 +173,13 @@ class Product extends BaseController
             // echo "<pre>";
             // print_r($tin);
             // die();
-            if (!empty($product_related)) {
-                $related_id = array();
-                foreach ($product_related as $key => $related) {
-                    $related_id[] = $related->product_related_id;
-                }
-                $tin->related = $related_id;
-            }
+            // if (!empty($product_related)) {
+            //     $related_id = array();
+            //     foreach ($product_related as $key => $related) {
+            //         $related_id[] = $related->product_related_id;
+            //     }
+            //     $tin->related = $related_id;
+            // }
             if (!empty($tin->region)) {
                 $tin->region = explode(",", $tin->region);
             }

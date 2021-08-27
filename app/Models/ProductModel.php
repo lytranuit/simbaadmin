@@ -35,7 +35,7 @@ class ProductModel extends Model
         if (gettype($row_a) == "object") {
             if (in_array("image_other", $relation)) {
                 $product_id = $row_a->id;
-                $builder = $this->db->table('pet_product_image');
+                $builder = $this->db->table('new_product_image');
                 $row_a->image_other = $builder->where('product_id', $product_id)->get()->getResult();
             }
             if (in_array("category", $relation)) {
@@ -56,7 +56,7 @@ class ProductModel extends Model
         } else {
             if (in_array("image_other", $relation)) {
                 $product_id = $row_a['id'];
-                $builder = $this->db->table('pet_product_image');
+                $builder = $this->db->table('new_product_image');
                 $row_a['image_other'] = $builder->where('product_id', $product_id)->get()->getResult("array");
             }
             if (in_array("category", $relation)) {
