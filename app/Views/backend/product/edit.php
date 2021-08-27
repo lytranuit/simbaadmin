@@ -52,6 +52,16 @@
                                         <option value="B">Miền Bắc</option>
                                     </select>
                                 </div>
+                                <b class="col-12 col-lg-2 col-form-label">Rượu:</b>
+                                <div class="col-12 col-lg-4 pt-1">
+                                    <div class="switch-button switch-button-xs switch-button-success">
+                                        <input type="hidden" class="input-tmp" checked="" name="is_alcohol" value="0">
+                                        <input type="checkbox" checked="" id="switch2" name="is_alcohol" value="1">
+                                        <span>
+                                            <label for="switch2"></label>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group row">
                                 <!-- <b class="col-12 col-lg-2 col-form-label">Hiển thị:</b>
@@ -264,7 +274,7 @@
 
                                     </div>
                                 </div>
-                                
+
                                 <div id="menu5" class=" tab-pane fade">
                                     <div class="row">
                                         <div class="col-12">
