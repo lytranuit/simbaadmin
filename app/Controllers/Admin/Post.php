@@ -17,8 +17,8 @@ class Post extends BaseController
         if (isset($_POST['dangtin'])) {
             helper("auth");
 
-            $post_model = model("postModel");
-            $post_tag_model = model("postTagModel");
+            $post_model = model("PostModel");
+            $post_tag_model = model("PostTagModel");
             $data = $this->request->getPost();
             $data['user_id'] = user_id();
             $obj = new \App\Entities\Post();
@@ -52,8 +52,8 @@ class Post extends BaseController
     { /////// trang ca nhan
         if (isset($_POST['dangtin'])) {
 
-            $post_model = model("postModel");
-            $post_tag_model = model("postTagModel");
+            $post_model = model("PostModel");
+            $post_tag_model = model("PostTagModel");
             $data = $this->request->getPost();
             $related_new = array();
             if (isset($data['tag_list'])) {
@@ -91,9 +91,9 @@ class Post extends BaseController
             $post_model->update($id, $obj);
             return redirect()->to(base_url('admin/' . $this->data['controller']));
         } else {
-            $post_model = model("postModel");
+            $post_model = model("PostModel");
             $tag_model = model("TagModel");
-            $post_tag_model = model("postTagModel");
+            $post_tag_model = model("PostTagModel");
             $tin = $post_model->where(array('id' => $id))->asObject()->first();
             /*TAG*/
             $category = $post_tag_model->where(array('post_id' => $id))->findAll();
@@ -121,7 +121,7 @@ class Post extends BaseController
 
     public function remove($id)
     { /////// trang ca nhan
-        $post_model = model("postModel");
+        $post_model = model("PostModel");
         $post_model->delete($id);
         header('Location: ' . $_SERVER['HTTP_REFERER']);
         exit;
@@ -129,7 +129,7 @@ class Post extends BaseController
 
     public function table()
     {
-        $post_model = model("postModel");
+        $post_model = model("PostModel");
         $limit = $this->request->getVar('length');
         $start = $this->request->getVar('start');
         $page = ($start / $limit) + 1;

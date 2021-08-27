@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class TagModel extends Model
 {
-    protected $table      = 'pet_tag';
+    protected $table      = 'new_tag';
     protected $primaryKey = 'id';
 
     protected $returnType     = 'App\Entities\Tag';
