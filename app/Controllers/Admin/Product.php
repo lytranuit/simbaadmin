@@ -19,7 +19,7 @@ class Product extends BaseController
 
             $Product_model = model("ProductModel");
             $ProductUnit_model = model("ProductUnitModel");
-            $ProductRelated_model = model("ProductRelatedModel");
+            // $ProductRelated_model = model("ProductRelatedModel");
             $Product_category_model = model("ProductCategoryModel");
             $Product_image_model = model("ProductImageModel");
             $data = $this->request->getPost();
@@ -76,30 +76,30 @@ class Product extends BaseController
             }
 
             /* SP lien quan */
-            $array = $ProductRelated_model->where('product_id', $id)->asArray()->findAll();
-            $related_old = array_map(function ($item) {
-                return $item['product_related_id'];
-            }, (array) $array);
-            $related_new = array();
-            if (isset($data['related'])) {
-                $related_new = array_merge($related_new, $data['related']);
-            }
-            $array_delete = array_diff($related_old, $related_new);
-            $array_add = array_diff($related_new, $related_old);
-            foreach ($array_add as $row) {
-                $array = array(
-                    'product_related_id' => $row,
-                    'product_id' => $id
-                );
-                $ProductRelated_model->insert($array);
-            }
-            foreach ($array_delete as $row) {
-                $array = array(
-                    'product_related_id' => $row,
-                    'product_id' => $id
-                );
-                $ProductRelated_model->where($array)->delete();
-            }
+            // $array = $ProductRelated_model->where('product_id', $id)->asArray()->findAll();
+            // $related_old = array_map(function ($item) {
+            //     return $item['product_related_id'];
+            // }, (array) $array);
+            // $related_new = array();
+            // if (isset($data['related'])) {
+            //     $related_new = array_merge($related_new, $data['related']);
+            // }
+            // $array_delete = array_diff($related_old, $related_new);
+            // $array_add = array_diff($related_new, $related_old);
+            // foreach ($array_add as $row) {
+            //     $array = array(
+            //         'product_related_id' => $row,
+            //         'product_id' => $id
+            //     );
+            //     $ProductRelated_model->insert($array);
+            // }
+            // foreach ($array_delete as $row) {
+            //     $array = array(
+            //         'product_related_id' => $row,
+            //         'product_id' => $id
+            //     );
+            //     $ProductRelated_model->where($array)->delete();
+            // }
             /*
              * DVT
              */
