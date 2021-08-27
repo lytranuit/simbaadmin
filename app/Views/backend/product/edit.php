@@ -110,11 +110,15 @@
                                 <!-- <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#menu7">Hình ảnh khác</a>
                                 </li> -->
+
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#menu5">Danh mục home</a>
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#menu3">Danh mục chính</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#menu4">Danh mục Zone</a>
+                                    <a class="nav-link" data-toggle="tab" href="#menu4">Danh mục zone</a>
                                 </li>
                             </ul>
                             <!-- Tab panes -->
@@ -250,6 +254,23 @@
                                             <label class="text-danger">Danh mục sản phẩm</label>
                                         </div>
                                         <?php foreach ($category1 as $row) : ?>
+                                            <div class="col-12">
+                                                <div class="custom-checkbox custom-control">
+                                                    <input name="category_list[]" type="checkbox" id="eCheckbox<?= $row->id ?>" class="custom-control-input" value="<?= $row->id ?>">
+                                                    <label class="custom-control-label" for="eCheckbox<?= $row->id ?>"><?= $row->name_vi ?> </label>
+                                                </div>
+                                            </div>
+                                        <?php endforeach ?>
+
+                                    </div>
+                                </div>
+                                
+                                <div id="menu5" class=" tab-pane fade">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <label class="text-danger">Danh mục sản phẩm</label>
+                                        </div>
+                                        <?php foreach ($category2 as $row) : ?>
                                             <div class="col-12">
                                                 <div class="custom-checkbox custom-control">
                                                     <input name="category_list[]" type="checkbox" id="eCheckbox<?= $row->id ?>" class="custom-control-input" value="<?= $row->id ?>">

@@ -193,6 +193,7 @@ class Product extends BaseController
             // $this->data['product'] = $Product_model->where(array("status" => 1))->findAll();
             $this->data['category'] = $category_model->where('group', "CATEGORY_MAIN")->findAll();
             $this->data['category1'] = $category_model->where('group', "CATEGORY_ZONE")->findAll();
+            $this->data['category2'] = $category_model->where('group', "CATEGORY_HOME")->findAll();
             $this->data['origin'] = $origin_model->findAll();
             $this->data['preservation'] = $preservation_model->findAll();
             $this->data['max_order'] = $Product_model->get_max_order();

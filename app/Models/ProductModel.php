@@ -14,7 +14,7 @@ class ProductModel extends Model
     protected $returnType     = 'App\Entities\Product';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['is_pet', 'region', 'image_url', 'name_vi', 'name_en', 'name_jp', 'description_vi', 'description_en', 'description_jp', 'volume_vi', 'volume_en', 'volume_jp', 'guide_vi', 'guide_en', 'guide_jp', 'detail_vi', 'detail_en', 'detail_jp', 'element_vi', 'element_en', 'element_jp', 'origin_country_id', 'preservation_id', 'sort'];
+    protected $allowedFields = ['is_alcohol', 'region', 'image_url', 'name_vi', 'name_en', 'name_jp', 'description_vi', 'description_en', 'description_jp', 'volume_vi', 'volume_en', 'volume_jp', 'guide_vi', 'guide_en', 'guide_jp', 'detail_vi', 'detail_en', 'detail_jp', 'element_vi', 'element_en', 'element_jp', 'origin_country_id', 'preservation_id', 'sort'];
 
 
     public function relation(&$data, $relation = array())

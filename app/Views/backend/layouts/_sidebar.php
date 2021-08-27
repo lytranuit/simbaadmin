@@ -77,6 +77,10 @@
 
                 <li class="app-sidebar__heading">Danh mục</li>
                 <li>
+                    <a href="<?= base_url() ?>/admin/categoryhome" class="">
+                        <i class="metismenu-icon fas fa-bars"></i>
+                        Danh mục home
+                    </a>
                     <a href="<?= base_url() ?>/admin/categorymain" class="">
                         <i class="metismenu-icon fas fa-bars"></i>
                         Danh mục chính
@@ -84,10 +88,6 @@
                     <a href="<?= base_url() ?>/admin/categoryzone" class="">
                         <i class="metismenu-icon fas fa-bars"></i>
                         Danh mục zone
-                    </a>
-                    <a href="<?= base_url() ?>/admin/categoryhome" class="">
-                        <i class="metismenu-icon fas fa-bars"></i>
-                        Danh mục home
                     </a>
                 </li>
                 <li class="app-sidebar__heading">Cài đặt</li>
