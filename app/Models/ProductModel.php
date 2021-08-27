@@ -40,7 +40,7 @@ class ProductModel extends Model
             }
             if (in_array("category", $relation)) {
                 $product_id = $row_a->id;
-                $builder = $this->db->table('pet_product_category')->join("pet_category", "pet_product_category.cateogry_id = pet_category.id");
+                $builder = $this->db->table('new_product_category')->join("pet_category", "new_product_category.cateogry_id = pet_category.id");
                 $row_a->tags = $builder->where('product_id', $product_id)->orderBy("order", "ASC")->get()->getResult();
             }
             if (in_array("units", $relation)) {
@@ -50,7 +50,7 @@ class ProductModel extends Model
             }
             if (in_array("pet", $relation)) {
                 $product_code = $row_a->code;
-                $builder = $this->db->table('pet_product');
+                $builder = $this->db->table('new_product');
                 $row_a->pet = $builder->where('code', $product_code)->get()->getFirstRow();
             }
         } else {
@@ -61,7 +61,7 @@ class ProductModel extends Model
             }
             if (in_array("category", $relation)) {
                 $product_id = $row_a['id'];
-                $builder = $this->db->table('pet_product_category')->join("pet_category", "pet_product_category.cateogry_id = pet_category.id");
+                $builder = $this->db->table('new_product_category')->join("pet_category", "new_product_category.cateogry_id = pet_category.id");
                 $row_a['tags'] = $builder->where('product_id', $product_id)->orderBy("order", "ASC")->get()->getResult("array");
             }
             if (in_array("units", $relation)) {
@@ -71,7 +71,7 @@ class ProductModel extends Model
             }
             if (in_array("pet", $relation)) {
                 $product_code = $row_a['code'];
-                $builder = $this->db->table('pet_product');
+                $builder = $this->db->table('new_product');
                 $row_a['pet'] = $builder->where('code', $product_code)->get()->getFirstRow("array");
             }
         }
@@ -98,7 +98,7 @@ class ProductModel extends Model
         }
         $builder = $this->db->table("product");
         $builder->whereIn('id', function (BaseBuilder $builder) use ($categories) {
-            return $builder->select('product_id')->from('pet_product_category')->whereIn('category_id', $categories);
+            return $builder->select('product_id')->from('new_product_category')->whereIn('category_id', $categories);
         });
         return $builder->where("status", 1)->where("is_pet", 1)->where('id !=', $id)->get()->getResult();
     }
@@ -132,16 +132,16 @@ class ProductModel extends Model
 
         $offset = ($page - 1) * $perPage;
         $my_region = area_current();
-        $builder = $this->db->table('product')->join("pet_product_category", "pet_product_category.product_id = product.id");
-        $count = $builder->where("status = 1 and is_pet = 1 and FIND_IN_SET('$my_region',region) AND category_id = $category_id")->orderBy("pet_product_category.order", "ASC")->countAllResults();
+        $builder = $this->db->table('product')->join("new_product_category", "new_product_category.product_id = product.id");
+        $count = $builder->where("status = 1 and is_pet = 1 and FIND_IN_SET('$my_region',region) AND category_id = $category_id")->orderBy("new_product_category.order", "ASC")->countAllResults();
 
-        $builder = $this->db->table('product')->join("pet_product_category", "pet_product_category.product_id = product.id")->select("product.*");
+        $builder = $this->db->table('product')->join("new_product_category", "new_product_category.product_id = product.id")->select("product.*");
         if ($sort == "price-asc") {
             $builder->orderBy('product.retail_price', "ASC");
         } elseif ($sort == "price-desc") {
             $builder->orderBy('product.retail_price', "DESC");
         } else {
-            $builder->orderBy("pet_product_category.order", "ASC");
+            $builder->orderBy("new_product_category.order", "ASC");
         }
         $products = $builder->where("status = 1 and is_pet = 1 and FIND_IN_SET('$my_region',region) AND category_id = $category_id")->limit($perPage, $offset)->get()->getResult();
 
@@ -168,10 +168,10 @@ class ProductModel extends Model
 
         $offset = ($page - 1) * $perPage;
         $my_region = area_current();
-        $builder = $this->db->table('product')->join("pet_product_price", "pet_product_price.product_id = product.id");
-        $count = $builder->where("status = 1 and is_pet = 1 and FIND_IN_SET('$my_region',region) and NOW() BETWEEN pet_product_price.date_from AND pet_product_price.date_to AND pet_product_price.deleted_at IS NULL")->orderBy("product.sort", "DESC")->countAllResults();
+        $builder = $this->db->table('product')->join("new_product_price", "new_product_price.product_id = product.id");
+        $count = $builder->where("status = 1 and is_pet = 1 and FIND_IN_SET('$my_region',region) and NOW() BETWEEN new_product_price.date_from AND new_product_price.date_to AND new_product_price.deleted_at IS NULL")->orderBy("product.sort", "DESC")->countAllResults();
 
-        $builder = $this->db->table('product')->join("pet_product_price", "pet_product_price.product_id = product.id")->select("product.*");
+        $builder = $this->db->table('product')->join("new_product_price", "new_product_price.product_id = product.id")->select("product.*");
         if ($sort == "price-asc") {
             $builder->orderBy('product.retail_price', "ASC");
         } elseif ($sort == "price-desc") {
@@ -179,7 +179,7 @@ class ProductModel extends Model
         } else {
             $builder->orderBy("product.sort", "DESC");
         }
-        $products = $builder->where("status = 1 and is_pet = 1 and FIND_IN_SET('$my_region',region) and NOW() BETWEEN pet_product_price.date_from AND pet_product_price.date_to AND pet_product_price.deleted_at IS NULL")->groupBy("product.id")->limit($perPage, $offset)->get()->getResult();
+        $products = $builder->where("status = 1 and is_pet = 1 and FIND_IN_SET('$my_region',region) and NOW() BETWEEN new_product_price.date_from AND new_product_price.date_to AND new_product_price.deleted_at IS NULL")->groupBy("product.id")->limit($perPage, $offset)->get()->getResult();
 
 
         foreach ($products as &$product) {
@@ -204,10 +204,10 @@ class ProductModel extends Model
         // echo "<pre>";
         // print_r($product->units);
         // die();
-        $builder = $this->db->table('pet_product_price');
+        $builder = $this->db->table('new_product_price');
         $product->price_km = $builder->where('product_id', $product_id)->where('deleted_at', NULL)->get()->getResult();
 
-        $builder = $this->db->table('pet_product');
+        $builder = $this->db->table('new_product');
         $product->pet = $builder->where('code', $product_code)->get()->getFirstRow();
 
 

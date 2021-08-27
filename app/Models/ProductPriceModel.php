@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class ProductPriceModel extends Model
 {
-    protected $table      = 'pet_product_price';
+    protected $table      = 'new_product_price';
     protected $primaryKey = 'id';
 
     protected $returnType     = 'App\Entities\ProductPrice';

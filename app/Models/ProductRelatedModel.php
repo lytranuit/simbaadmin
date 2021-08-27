@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 
 class ProductRelatedModel extends Model
 {
-    protected $table      = 'pet_product_related';
+    protected $table      = 'new_product_related';
     protected $primaryKey = 'id';
 
     protected $returnType     = 'object';
