@@ -12,6 +12,7 @@
                         <button type="submit" name="dangtin" class="btn btn-sm btn-primary float-right">Save</button>
                     </div>
                 </h5>
+
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-8">
@@ -32,16 +33,27 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <b class="col-12 col-lg-2 col-form-label">Text:</b>
+                                <b class="col-12 col-lg-2 col-form-label">Text VN:</b>
                                 <div class="col-12 col-lg-4 pt-1">
-                                    <input class="form-control form-control-sm" type='text' name="text" />
+                                    <input class="form-control form-control-sm" type='text' name="text_vi" />
                                 </div>
                                 <b class="col-12 col-lg-2 col-form-label">Liên kết</b>
                                 <div class="col-12 col-lg-4 pt-1">
                                     <input class="form-control form-control-sm" type='text' name="url" />
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <b class="col-12 col-lg-2 col-form-label">Text EN:</b>
+                                <div class="col-12 col-lg-4 pt-1">
+                                    <input class="form-control form-control-sm" type='text' name="text_en" />
+                                </div>
+                                <b class="col-12 col-lg-2 col-form-label">Text JP</b>
+                                <div class="col-12 col-lg-4 pt-1">
+                                    <input class="form-control form-control-sm" type='text' name="text_jp" />
+                                </div>
+                            </div>
                         </div>
+
 
                         <div class="col-md-4">
                             <div class="form-group row">
