@@ -49,6 +49,8 @@
     var controller = '<?= $controller ?>';
     $(document).ready(function() {
         $('#quanlytin').DataTable({
+            
+            "stateSave": true,
             "processing": true,
             "serverSide": true,
             "ajax": {

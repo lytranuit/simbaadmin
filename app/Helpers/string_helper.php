@@ -161,6 +161,7 @@ if (!function_exists('area_current')) {
         return $area_current;
     }
 }
+
 if (!function_exists('html_nestable')) {
 
     function html_nestable($array, $column, $parent, $controller = '')
@@ -196,6 +197,33 @@ if (!function_exists('html_nestable')) {
         }
         ///End Tag
         $html .= '</ol>';
+
+        return $html;
+    }
+}
+if (!function_exists('html_product_category_nestable')) {
+
+    function html_product_category_nestable($array, $column, $parent)
+    {
+        $html = "";
+        $return = array_filter((array) $array, function ($item) use ($column, $parent) {
+            return $item[$column] == $parent;
+        });
+        ///Bebin Tag
+        $html .= '<ul style="list-style: none;">';
+        ///Content
+        foreach ($return as $row) {
+            $sub_html = "";
+
+            $html .= '<li><div class="custom-checkbox custom-control">
+            <input name="category_list[]" type="checkbox" id="eCheckbox' . $row['id'] . '" class="custom-control-input" value="' . $row['id'] . '">
+            <label class="custom-control-label" for="eCheckbox' . $row['id'] . '">' . $row['name_vi'] . '</label>
+        </div>';
+            $html .= html_product_category_nestable((array) $array, $column, $row['id']);
+            $html .= '</li>';
+        }
+        ///End Tag
+        $html .= '</ul>';
 
         return $html;
     }

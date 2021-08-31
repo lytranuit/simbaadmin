@@ -130,6 +130,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#menu4">Danh mục zone</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#menu7">Rượu</a>
+                                </li>
                             </ul>
                             <!-- Tab panes -->
                             <div class="tab-content">
@@ -245,16 +248,8 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <label class="text-danger">Danh mục sản phẩm</label>
+                                            <?= $category ?>
                                         </div>
-                                        <?php foreach ($category as $row) : ?>
-                                            <div class="col-12">
-                                                <div class="custom-checkbox custom-control">
-                                                    <input name="category_list[]" type="checkbox" id="eCheckbox<?= $row->id ?>" class="custom-control-input" value="<?= $row->id ?>">
-                                                    <label class="custom-control-label" for="eCheckbox<?= $row->id ?>"><?= $row->name_vi ?> </label>
-                                                </div>
-                                            </div>
-                                        <?php endforeach ?>
-
                                     </div>
                                 </div>
 
@@ -262,15 +257,9 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <label class="text-danger">Danh mục sản phẩm</label>
+                                            <?= $category1 ?>
                                         </div>
-                                        <?php foreach ($category1 as $row) : ?>
-                                            <div class="col-12">
-                                                <div class="custom-checkbox custom-control">
-                                                    <input name="category_list[]" type="checkbox" id="eCheckbox<?= $row->id ?>" class="custom-control-input" value="<?= $row->id ?>">
-                                                    <label class="custom-control-label" for="eCheckbox<?= $row->id ?>"><?= $row->name_vi ?> </label>
-                                                </div>
-                                            </div>
-                                        <?php endforeach ?>
+
 
                                     </div>
                                 </div>
@@ -279,17 +268,14 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <label class="text-danger">Danh mục sản phẩm</label>
-                                        </div>
-                                        <?php foreach ($category2 as $row) : ?>
-                                            <div class="col-12">
-                                                <div class="custom-checkbox custom-control">
-                                                    <input name="category_list[]" type="checkbox" id="eCheckbox<?= $row->id ?>" class="custom-control-input" value="<?= $row->id ?>">
-                                                    <label class="custom-control-label" for="eCheckbox<?= $row->id ?>"><?= $row->name_vi ?> </label>
-                                                </div>
-                                            </div>
-                                        <?php endforeach ?>
 
+                                            <?= $category2 ?>
+                                        </div>
                                     </div>
+                                </div>
+
+                                <div id="menu7" class=" tab-pane fade">
+
                                 </div>
                                 <div id="menu6" class=" tab-pane fade">
                                     <div class="row clearfix">

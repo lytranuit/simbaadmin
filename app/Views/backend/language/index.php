@@ -66,6 +66,8 @@
             return $(value).val();
         };
         $('#quanlytin').DataTable({
+
+            "stateSave": true,
             columnDefs: [{
                 "type": "html-input",
                 "targets": [2, 3, 4]

@@ -46,6 +46,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('#quanlytin').DataTable({
+            "stateSave": true,
             "processing": true,
             "serverSide": true,
             "ajax": {
