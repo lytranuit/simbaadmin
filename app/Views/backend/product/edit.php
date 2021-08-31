@@ -365,7 +365,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div id="ruou1" class="tab-pane active">
+                                                <div id="ruou1" class="tab-pane">
                                                     <div class="form-group row">
                                                         <div class="col-3">
                                                             <b class="col-form-label d-inline-block">Loại sake:</b>
@@ -412,7 +412,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div id="ruou2" class="tab-pane active">
+                                                <div id="ruou2" class="tab-pane">
                                                     <div class="form-group row">
                                                         <div class="col-3">
                                                             <b class="col-form-label d-inline-block">Loại sake:</b>
