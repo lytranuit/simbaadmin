@@ -53,6 +53,11 @@ class ProductModel extends Model
                 $builder = $this->db->table('new_product');
                 $row_a->pet = $builder->where('code', $product_code)->get()->getFirstRow();
             }
+            if (in_array("ProductExt", $relation)) {
+                $product_id = $row_a->id;
+                $builder = $this->db->table('new_product_ext');
+                $row_a->ProductExt = $builder->where('product_id', $product_id)->get()->getFirstRow();
+            }
         } else {
             if (in_array("image_other", $relation)) {
                 $product_id = $row_a['id'];
@@ -73,6 +78,11 @@ class ProductModel extends Model
                 $product_code = $row_a['code'];
                 $builder = $this->db->table('new_product');
                 $row_a['pet'] = $builder->where('code', $product_code)->get()->getFirstRow("array");
+            }
+            if (in_array("ProductExt", $relation)) {
+                $product_id = $row_a['id'];
+                $builder = $this->db->table('new_product_ext');
+                $row_a['ProductExt'] = $builder->where('product_id', $product_id)->get()->getFirstRow("array");
             }
         }
         return $row_a;

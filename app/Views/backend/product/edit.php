@@ -117,10 +117,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#menu6">Đơn vị tính</a>
                                 </li>
-                                <!-- <li class="nav-item">
+                                <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#menu7">Hình ảnh khác</a>
-                                </li> -->
-
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#menu5">Danh mục home</a>
                                 </li>
@@ -131,7 +130,7 @@
                                     <a class="nav-link" data-toggle="tab" href="#menu4">Danh mục zone</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#menu7">Rượu</a>
+                                    <a class="nav-link" data-toggle="tab" href="#menu8">Rượu</a>
                                 </li>
                             </ul>
                             <!-- Tab panes -->
@@ -171,6 +170,7 @@
                                             <textarea class="edit" name="guide_vi" placeholder="Tiếng việt"></textarea>
                                         </div>
                                     </div>
+
                                 </div>
                                 <div id="menu1" class=" tab-pane fade">
                                     <div class="form-group row">
@@ -274,9 +274,6 @@
                                     </div>
                                 </div>
 
-                                <div id="menu7" class=" tab-pane fade">
-
-                                </div>
                                 <div id="menu6" class=" tab-pane fade">
                                     <div class="row clearfix">
                                         <div class="col-12">
@@ -304,7 +301,443 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!---- <div id="menu7" class=" tab-pane fade">
+
+                                <div id="menu8" class=" tab-pane fade">
+
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <ul class="nav nav-tabs">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" data-toggle="tab" href="#ruou0">Tiếng Việt</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#ruou1">Tiếng Anh</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#ruou2">Tiếng Nhật</a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content">
+                                                <div id="ruou0" class="tab-pane active">
+                                                    <div class="form-group row">
+                                                        <div class="col-3">
+                                                            <b class="col-form-label d-inline-block">Loại sake:</b>
+                                                            <div class="">
+                                                                <input class="form-control form-control-sm" type='text' name="ProductExt[category_vi]" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <b class="col-form-label d-inline-block">Thành phần:</b>
+                                                            <div class="">
+                                                                <input class="form-control form-control-sm" type='text' name="ProductExt[ingredients_vi]" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <b class="col-form-label d-inline-block">Vùng:</b>
+                                                            <div class="">
+                                                                <input class="form-control form-control-sm" type='text' name="ProductExt[region_vi]" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <b class="col-form-label d-inline-block">Nhà sản xuất:</b>
+                                                            <div class="">
+                                                                <input class="form-control form-control-sm" type='text' name="ProductExt[brewery_vi]" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <b class="col-form-label d-inline-block">Đặc điểm:</b>
+                                                            <div class="">
+                                                                <textarea class="edit" name="ProductExt[profile_vi]"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <b class="col-form-label d-inline-block">Tasting Note:</b>
+                                                            <div class="">
+                                                                <textarea class="edit" name="ProductExt[tasting_note_vi]"></textarea>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class=" col-12">
+                                                            <b class="col-form-label d-inline-block">Food Pairings:</b>
+                                                            <div class="">
+                                                                <textarea class="edit" name="ProductExt[food_pairings_vi]"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="ruou1" class="tab-pane active">
+                                                    <div class="form-group row">
+                                                        <div class="col-3">
+                                                            <b class="col-form-label d-inline-block">Loại sake:</b>
+                                                            <div class="">
+                                                                <input class="form-control form-control-sm" type='text' name="ProductExt[category_en]" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <b class="col-form-label d-inline-block">Thành phần:</b>
+                                                            <div class="">
+                                                                <input class="form-control form-control-sm" type='text' name="ProductExt[ingredients_en]" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <b class="col-form-label d-inline-block">Vùng:</b>
+                                                            <div class="">
+                                                                <input class="form-control form-control-sm" type='text' name="ProductExt[region_en]" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <b class="col-form-label d-inline-block">Nhà sản xuất:</b>
+                                                            <div class="">
+                                                                <input class="form-control form-control-sm" type='text' name="ProductExt[brewery_en]" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <b class="col-form-label d-inline-block">Đặc điểm:</b>
+                                                            <div class="">
+                                                                <textarea class="edit" name="ProductExt[profile_en]"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <b class="col-form-label d-inline-block">Tasting Note:</b>
+                                                            <div class="">
+                                                                <textarea class="edit" name="ProductExt[tasting_note_en]"></textarea>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class=" col-12">
+                                                            <b class="col-form-label d-inline-block">Food Pairings:</b>
+                                                            <div class="">
+                                                                <textarea class="edit" name="ProductExt[food_pairings_en]"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="ruou2" class="tab-pane active">
+                                                    <div class="form-group row">
+                                                        <div class="col-3">
+                                                            <b class="col-form-label d-inline-block">Loại sake:</b>
+                                                            <div class="">
+                                                                <input class="form-control form-control-sm" type='text' name="ProductExt[category_ja]" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <b class="col-form-label d-inline-block">Thành phần:</b>
+                                                            <div class="">
+                                                                <input class="form-control form-control-sm" type='text' name="ProductExt[ingredients_ja]" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <b class="col-form-label d-inline-block">Vùng:</b>
+                                                            <div class="">
+                                                                <input class="form-control form-control-sm" type='text' name="ProductExt[region_ja]" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <b class="col-form-label d-inline-block">Nhà sản xuất:</b>
+                                                            <div class="">
+                                                                <input class="form-control form-control-sm" type='text' name="ProductExt[brewery_ja]" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <b class="col-form-label d-inline-block">Đặc điểm:</b>
+                                                            <div class="">
+                                                                <textarea class="edit" name="ProductExt[profile_ja]"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <b class="col-form-label d-inline-block">Tasting Note:</b>
+                                                            <div class="">
+                                                                <textarea class="edit" name="ProductExt[tasting_note_ja]"></textarea>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class=" col-12">
+                                                            <b class="col-form-label d-inline-block">Food Pairings:</b>
+                                                            <div class="">
+                                                                <textarea class="edit" name="ProductExt[food_pairings_ja]"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 p-0">
+                                            <div class="mb-2">
+                                                <div class="card no-shadow border">
+                                                    <div class="card-header">
+                                                        Sake Ratio Attributes
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="form-group row mb-1 field-productext-rice_polishing_ratio has-success">
+                                                            <label class="control-label col-sm-6 col-xs-12 font-weight-bold" for="productext-rice_polishing_ratio">Tỷ lệ mài gạo</label>
+                                                            <div class="col-sm-6 col-xs-12">
+                                                                <input type="text" id="productext-rice_polishing_ratio" class="form-control form-control-sm" name="ProductExt[rice_polishing_ratio]" aria-invalid="false">
+                                                            </div>
+
+                                                            <div class="help-block"></div>
+                                                        </div>
+                                                        <div class="form-group row mb-1 field-productext-smv has-success">
+                                                            <label class="control-label col-sm-6 col-xs-12 font-weight-bold" for="productext-smv">S.M.V</label>
+                                                            <div class="col-sm-6 col-xs-12">
+                                                                <input type="text" id="productext-smv" class="form-control form-control-sm" name="ProductExt[smv]" aria-invalid="false">
+                                                            </div>
+
+                                                            <div class="help-block"></div>
+                                                        </div>
+                                                        <div class="form-group row mb-1 field-productext-acidity has-success">
+                                                            <label class="control-label col-sm-6 col-xs-12 font-weight-bold" for="productext-acidity">Độ axit</label>
+                                                            <div class="col-sm-6 col-xs-12">
+                                                                <input type="text" id="productext-acidity" class="form-control form-control-sm" name="ProductExt[acidity]" aria-invalid="false">
+                                                            </div>
+
+                                                            <div class="help-block"></div>
+                                                        </div>
+                                                        <div class="form-group row mb-1 field-productext-amino_acid_level">
+                                                            <label class="control-label col-sm-6 col-xs-12 font-weight-bold" for="productext-amino_acid_level">Axit amin</label>
+                                                            <div class="col-sm-6 col-xs-12">
+                                                                <input type="text" id="productext-amino_acid_level" class="form-control form-control-sm" name="ProductExt[amino_acid_level]">
+                                                            </div>
+
+                                                            <div class="help-block"></div>
+                                                        </div>
+                                                        <div class="form-group row mb-1 field-productext-alcohol_content">
+                                                            <label class="control-label col-sm-6 col-xs-12 font-weight-bold" for="productext-alcohol_content">Nồng Độ Cồn</label>
+                                                            <div class="col-sm-6 col-xs-12">
+                                                                <input type="text" id="productext-alcohol_content" class="form-control form-control-sm" name="ProductExt[alcohol_content]">
+                                                            </div>
+
+                                                            <div class="help-block"></div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="mb-2">
+                                                <div class="card no-shadow border">
+                                                    <div class="card-header">
+                                                        Vị rượu Sake
+                                                    </div>
+                                                    <div class="card-body p-3 row m-1">
+                                                        <div class="custom-control custom-checkbox mb-3 col-sm-6 col-xs-12 field-productext-tastes-sweet">
+                                                            <input type="hidden" name="ProductExt[tastes][sweet]" value="0"><input type="checkbox" id="productext-tastes-sweet" class="custom-control-input" name="ProductExt[tastes][sweet]" value="1">
+                                                            <label class="custom-control-label font-weight-bold" for="productext-tastes-sweet">Ngọt</label>
+                                                        </div>
+                                                        <div class="custom-control custom-checkbox mb-3 col-sm-6 col-xs-12 field-productext-tastes-semi_sweet">
+                                                            <input type="hidden" name="ProductExt[tastes][semi_sweet]" value="0"><input type="checkbox" id="productext-tastes-semi_sweet" class="custom-control-input" name="ProductExt[tastes][semi_sweet]" value="1">
+                                                            <label class="custom-control-label font-weight-bold" for="productext-tastes-semi_sweet">Hơi ngọt</label>
+                                                        </div>
+                                                        <div class="custom-control custom-checkbox mb-3 col-sm-6 col-xs-12 field-productext-tastes-semi_dry">
+                                                            <input type="hidden" name="ProductExt[tastes][semi_dry]" value="0"><input type="checkbox" id="productext-tastes-semi_dry" class="custom-control-input" name="ProductExt[tastes][semi_dry]" value="1">
+                                                            <label class="custom-control-label font-weight-bold" for="productext-tastes-semi_dry">Hơi Khô</label>
+                                                        </div>
+                                                        <div class="custom-control custom-checkbox mb-3 col-sm-6 col-xs-12 field-productext-tastes-dry">
+                                                            <input type="hidden" name="ProductExt[tastes][dry]" value="0"><input type="checkbox" id="productext-tastes-dry" class="custom-control-input" name="ProductExt[tastes][dry]" value="1">
+                                                            <label class="custom-control-label font-weight-bold" for="productext-tastes-dry">Khô</label>
+                                                        </div>
+                                                        <div class="custom-control custom-checkbox mb-3 col-sm-6 col-xs-12 field-productext-tastes-extra_dry">
+                                                            <input type="hidden" name="ProductExt[tastes][extra_dry]" value="0"><input type="checkbox" id="productext-tastes-extra_dry" class="custom-control-input" name="ProductExt[tastes][extra_dry]" value="1">
+                                                            <label class="custom-control-label font-weight-bold" for="productext-tastes-extra_dry">Rất Khô</label>
+                                                        </div>
+                                                        <div class="custom-control custom-checkbox mb-3 col-sm-6 col-xs-12 field-productext-tastes-fragrant">
+                                                            <input type="hidden" name="ProductExt[tastes][fragrant]" value="0"><input type="checkbox" id="productext-tastes-fragrant" class="custom-control-input" name="ProductExt[tastes][fragrant]" value="1">
+                                                            <label class="custom-control-label font-weight-bold" for="productext-tastes-fragrant">Thơm</label>
+                                                        </div>
+                                                        <div class="custom-control custom-checkbox mb-3 col-sm-6 col-xs-12 field-productext-tastes-light">
+                                                            <input type="hidden" name="ProductExt[tastes][light]" value="0"><input type="checkbox" id="productext-tastes-light" class="custom-control-input" name="ProductExt[tastes][light]" value="1">
+                                                            <label class="custom-control-label font-weight-bold" for="productext-tastes-light">Nhẹ nhàng</label>
+                                                        </div>
+                                                        <div class="custom-control custom-checkbox mb-3 col-sm-6 col-xs-12 field-productext-tastes-aged">
+                                                            <input type="hidden" name="ProductExt[tastes][aged]" value="0"><input type="checkbox" id="productext-tastes-aged" class="custom-control-input" name="ProductExt[tastes][aged]" value="1">
+                                                            <label class="custom-control-label font-weight-bold" for="productext-tastes-aged">Lâu năm</label>
+                                                        </div>
+                                                        <div class="custom-control custom-checkbox mb-3 col-sm-6 col-xs-12 field-productext-tastes-rich">
+                                                            <input type="hidden" name="ProductExt[tastes][rich]" value="0"><input type="checkbox" id="productext-tastes-rich" class="custom-control-input" name="ProductExt[tastes][rich]" value="1">
+                                                            <label class="custom-control-label font-weight-bold" for="productext-tastes-rich">Mạnh</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-2">
+                                                <div class="card no-shadow border">
+                                                    <div class="card-header">
+                                                        Thực phẩm dùng kèm
+                                                    </div>
+                                                    <div class="card-body p-3 row m-1">
+                                                        <div class="custom-control custom-checkbox mb-3 col-sm-12 col-xs-12 field-productext-best_matching_food-apertizer">
+                                                            <input type="hidden" name="ProductExt[best_matching_food][apertizer]" value="0"><input type="checkbox" id="productext-best_matching_food-apertizer" class="custom-control-input" name="ProductExt[best_matching_food][apertizer]" value="1">
+                                                            <label class="custom-control-label font-weight-bold" for="productext-best_matching_food-apertizer">Món khai vị</label>
+                                                        </div>
+                                                        <div class="custom-control custom-checkbox mb-3 col-sm-12 col-xs-12 field-productext-best_matching_food-main_dish">
+                                                            <input type="hidden" name="ProductExt[best_matching_food][main_dish]" value="0"><input type="checkbox" id="productext-best_matching_food-main_dish" class="custom-control-input" name="ProductExt[best_matching_food][main_dish]" value="1">
+                                                            <label class="custom-control-label font-weight-bold" for="productext-best_matching_food-main_dish">Bữa chính</label>
+                                                        </div>
+                                                        <div class="custom-control custom-checkbox mb-3 col-sm-12 col-xs-12 field-productext-best_matching_food-after_meal">
+                                                            <input type="hidden" name="ProductExt[best_matching_food][after_meal]" value="0"><input type="checkbox" id="productext-best_matching_food-after_meal" class="custom-control-input" name="ProductExt[best_matching_food][after_meal]" value="1">
+                                                            <label class="custom-control-label font-weight-bold" for="productext-best_matching_food-after_meal">Sau bữa chính ( tráng miệng)</label>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="mb-2">
+                                                <div class="card no-shadow border">
+                                                    <div class="card-header">
+                                                        Cách thưởng thức
+                                                    </div>
+                                                    <div class="card-body p-2 m-1">
+
+                                                        <div class="form-group row mb-1 field-productext-enjoy_guide-enjoy_guide_cold">
+                                                            <label class="control-label col-sm-6 col-md-7 col-xs-12 font-weight-bold" for="productext-enjoy_guide-enjoy_guide_cold">Uống lạnh (5-10°C)</label>
+                                                            <div class="col-sm-6 col-md-5 col-xs-12">
+                                                                <select id="productext-enjoy_guide-enjoy_guide_cold" class="form-control form-control-sm" name="ProductExt[enjoy_guide][enjoy_guide_cold]" style="height:auto;">
+                                                                    <option value="">Cấp độ</option>
+                                                                    <option value="1">◉</option>
+                                                                    <option value="2">●</option>
+                                                                    <option value="3">▲</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="help-block"></div>
+                                                        </div>
+                                                        <div class="form-group row mb-1 field-productext-enjoy_guide-enjoy_guide_room_temp">
+                                                            <label class="control-label col-sm-6 col-md-7 col-xs-12 font-weight-bold" for="productext-enjoy_guide-enjoy_guide_room_temp">Nhiệt độ phòng (15-20°C)</label>
+                                                            <div class="col-sm-6 col-md-5 col-xs-12">
+                                                                <select id="productext-enjoy_guide-enjoy_guide_room_temp" class="form-control form-control-sm" name="ProductExt[enjoy_guide][enjoy_guide_room_temp]" style="height:auto;">
+                                                                    <option value="">Cấp độ</option>
+                                                                    <option value="1">◉</option>
+                                                                    <option value="2">●</option>
+                                                                    <option value="3">▲</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="help-block"></div>
+                                                        </div>
+                                                        <div class="form-group row mb-1 field-productext-enjoy_guide-enjoy_guide_body_temp">
+                                                            <label class="control-label col-sm-6 col-md-7 col-xs-12 font-weight-bold" for="productext-enjoy_guide-enjoy_guide_body_temp">Uống hơi ấm (~ 37°C)</label>
+                                                            <div class="col-sm-6 col-md-5 col-xs-12">
+                                                                <select id="productext-enjoy_guide-enjoy_guide_body_temp" class="form-control form-control-sm" name="ProductExt[enjoy_guide][enjoy_guide_body_temp]" style="height:auto;">
+                                                                    <option value="">Cấp độ</option>
+                                                                    <option value="1">◉</option>
+                                                                    <option value="2">●</option>
+                                                                    <option value="3">▲</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="help-block"></div>
+                                                        </div>
+                                                        <div class="form-group row mb-1 field-productext-enjoy_guide-enjoy_guide_warm">
+                                                            <label class="control-label col-sm-6 col-md-7 col-xs-12 font-weight-bold" for="productext-enjoy_guide-enjoy_guide_warm">Uống ấm (40 - 45°C)</label>
+                                                            <div class="col-sm-6 col-md-5 col-xs-12">
+                                                                <select id="productext-enjoy_guide-enjoy_guide_warm" class="form-control form-control-sm" name="ProductExt[enjoy_guide][enjoy_guide_warm]" style="height:auto;">
+                                                                    <option value="">Cấp độ</option>
+                                                                    <option value="1">◉</option>
+                                                                    <option value="2">●</option>
+                                                                    <option value="3">▲</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="help-block"></div>
+                                                        </div>
+                                                        <div class="form-group row mb-1 field-productext-enjoy_guide-enjoy_guide_hot_temp">
+                                                            <label class="control-label col-sm-6 col-md-7 col-xs-12 font-weight-bold" for="productext-enjoy_guide-enjoy_guide_hot_temp">Uống nóng ( &gt; 50°C)</label>
+                                                            <div class="col-sm-6 col-md-5 col-xs-12">
+                                                                <select id="productext-enjoy_guide-enjoy_guide_hot_temp" class="form-control form-control-sm" name="ProductExt[enjoy_guide][enjoy_guide_hot_temp]" style="height:auto;">
+                                                                    <option value="">Cấp độ</option>
+                                                                    <option value="1">◉</option>
+                                                                    <option value="2">●</option>
+                                                                    <option value="3">▲</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="help-block"></div>
+                                                        </div>
+                                                        <div class="form-group row mb-1 field-productext-enjoy_guide-enjoy_guide_drink_with_ice">
+                                                            <label class="control-label col-sm-6 col-md-7 col-xs-12 font-weight-bold" for="productext-enjoy_guide-enjoy_guide_drink_with_ice">Uống với đá</label>
+                                                            <div class="col-sm-6 col-md-5 col-xs-12">
+                                                                <select id="productext-enjoy_guide-enjoy_guide_drink_with_ice" class="form-control form-control-sm" name="ProductExt[enjoy_guide][enjoy_guide_drink_with_ice]" style="height:auto;">
+                                                                    <option value="">Cấp độ</option>
+                                                                    <option value="1">◉</option>
+                                                                    <option value="2">●</option>
+                                                                    <option value="3">▲</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="help-block"></div>
+                                                        </div>
+                                                        <div class="form-group row mb-1 field-productext-enjoy_guide-enjoy_guide_drink_with_hot_water">
+                                                            <label class="control-label col-sm-6 col-md-7 col-xs-12 font-weight-bold" for="productext-enjoy_guide-enjoy_guide_drink_with_hot_water">Uống với nước nóng</label>
+                                                            <div class="col-sm-6 col-md-5 col-xs-12">
+                                                                <select id="productext-enjoy_guide-enjoy_guide_drink_with_hot_water" class="form-control form-control-sm" name="ProductExt[enjoy_guide][enjoy_guide_drink_with_hot_water]" style="height:auto;">
+                                                                    <option value="">Cấp độ</option>
+                                                                    <option value="1">◉</option>
+                                                                    <option value="2">●</option>
+                                                                    <option value="3">▲</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="help-block"></div>
+                                                        </div>
+                                                        <div class="form-group row mb-1 field-productext-enjoy_guide-enjoy_guide_drink_with_water">
+                                                            <label class="control-label col-sm-6 col-md-7 col-xs-12 font-weight-bold" for="productext-enjoy_guide-enjoy_guide_drink_with_water">Uống với nước</label>
+                                                            <div class="col-sm-6 col-md-5 col-xs-12">
+                                                                <select id="productext-enjoy_guide-enjoy_guide_drink_with_water" class="form-control form-control-sm" name="ProductExt[enjoy_guide][enjoy_guide_drink_with_water]" style="height:auto;">
+                                                                    <option value="">Cấp độ</option>
+                                                                    <option value="1">◉</option>
+                                                                    <option value="2">●</option>
+                                                                    <option value="3">▲</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="help-block"></div>
+                                                        </div>
+                                                        <div class="form-group row mb-1 field-productext-enjoy_guide-enjoy_guide_drink_directly">
+                                                            <label class="control-label col-sm-6 col-md-7 col-xs-12 font-weight-bold" for="productext-enjoy_guide-enjoy_guide_drink_directly">Uống trực tiếp</label>
+                                                            <div class="col-sm-6 col-md-5 col-xs-12">
+                                                                <select id="productext-enjoy_guide-enjoy_guide_drink_directly" class="form-control form-control-sm" name="ProductExt[enjoy_guide][enjoy_guide_drink_directly]" style="height:auto;">
+                                                                    <option value="">Cấp độ</option>
+                                                                    <option value="1">◉</option>
+                                                                    <option value="2">●</option>
+                                                                    <option value="3">▲</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="help-block"></div>
+                                                        </div>
+                                                        <div class="form-group row mb-1 field-productext-enjoy_guide-enjoy_guide_drink_with_sodas">
+                                                            <label class="control-label col-sm-6 col-md-7 col-xs-12 font-weight-bold" for="productext-enjoy_guide-enjoy_guide_drink_with_sodas">Uống với soda</label>
+                                                            <div class="col-sm-6 col-md-5 col-xs-12">
+                                                                <select id="productext-enjoy_guide-enjoy_guide_drink_with_sodas" class="form-control form-control-sm" name="ProductExt[enjoy_guide][enjoy_guide_drink_with_sodas]" style="height:auto;">
+                                                                    <option value="">Cấp độ</option>
+                                                                    <option value="1">◉</option>
+                                                                    <option value="2">●</option>
+                                                                    <option value="3">▲</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="help-block"></div>
+                                                        </div>
+                                                        <div class="form-group row mb-1 field-productext-enjoy_guide-enjoy_make_cocktails">
+                                                            <label class="control-label col-sm-6 col-md-7 col-xs-12 font-weight-bold" for="productext-enjoy_guide-enjoy_make_cocktails">Pha cocktails</label>
+                                                            <div class="col-sm-6 col-md-5 col-xs-12">
+                                                                <select id="productext-enjoy_guide-enjoy_make_cocktails" class="form-control form-control-sm" name="ProductExt[enjoy_guide][enjoy_make_cocktails]" style="height:auto;">
+                                                                    <option value="">Cấp độ</option>
+                                                                    <option value="1">◉</option>
+                                                                    <option value="2">●</option>
+                                                                    <option value="3">▲</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="help-block"></div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div id="menu7" class=" tab-pane fade">
                                     <div class="row clearfix">
                                         <div class="col-12">
                                             <section class="card card-fluid">
@@ -327,7 +760,7 @@
                                             </section>
                                         </div>
                                     </div>
-                                </div> --->
+                                </div>
                             </div>
 
                         </div>
@@ -439,7 +872,7 @@
                 var url_input = url;
                 if (replacepath) {
                     url_image = url.replace(replacepath[0], replacepath[1]);
-                    url_image = url_input.replace(replacepath[0], "");
+                    url_input = url_input.replace(replacepath[0], "");
                 }
                 row['image'] = '<img src="' + url_image + '" width="200"/>';
                 row['src'] = url_input;

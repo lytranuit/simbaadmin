@@ -19,19 +19,24 @@ class Product extends BaseController
 
             $Product_model = model("ProductModel");
             $ProductUnit_model = model("ProductUnitModel");
-            // $ProductRelated_model = model("ProductRelatedModel");
+            $ProductExt_model = model("ProductExtModel");
             $Product_category_model = model("ProductCategoryModel");
             $Product_image_model = model("ProductImageModel");
             $data = $this->request->getPost();
+            // echo "<pre>";
+            // print_r($data);
+            // die();
+            $data['ProductExt']['tastes'] = serialize($data['ProductExt']['tastes']);
+            $data['ProductExt']['best_matching_food'] = serialize($data['ProductExt']['best_matching_food']);
+            $data['ProductExt']['enjoy_guide'] = serialize($data['ProductExt']['enjoy_guide']);
+            $data_ext = $ProductExt_model->create_object($data['ProductExt']);
 
-            $code = $data['code'];
-            $data_pet = array('code' => $code);
-            foreach ($data as $key => $val) {
-                if (substr($key, 0, 4) == "pet_") {
-                    $key_pet = substr($key, 4);
-                    $data_pet[$key_pet] = $val;
-                }
-            }
+            // foreach ($data as $key => $val) {
+            //     if (substr($key, 0, 4) == "pet_") {
+            //         $key_pet = substr($key, 4);
+            //         $data_pet[$key_pet] = $val;
+            //     }
+            // }
             if (isset($data['region'])) {
                 $data['region'] = implode(",", $data['region']);
             }
@@ -44,6 +49,23 @@ class Product extends BaseController
             $obj = $Product_model->create_object($data);
             $Product_model->update($id, $obj);
 
+            ///Update Data EXT
+            if (isset($data['ProductExt'])) {
+
+                // echo "<pre>";
+                // print_r($data_ext);
+                // die();
+                $check = $ProductExt_model->where('product_id', $id)->first();
+                // print_r($check);
+                if (empty($check)) {
+                    $data_ext['product_id'] = $id;
+                    $data_ext['created_at'] = time();
+                    $ProductExt_model->insert($data_ext);
+                } else {
+                    $id_ext = $check->id;
+                    $ProductExt_model->update($id_ext, $data_ext);
+                }
+            }
 
             /* CATEGORY */
             $related_new = array();
@@ -141,7 +163,7 @@ class Product extends BaseController
             $Product_category_model = model("ProductCategoryModel");
             $Product_related_model = model("ProductRelatedModel");
             $tin = $Product_model->where(array('id' => $id))->asObject()->first();
-            $Product_model->relation($tin, array('image_other', 'units'));
+            $Product_model->relation($tin, array('image_other', 'units', 'ProductExt'));
             // echo "<pre>";
             // print_r($tin);
             // die();
@@ -159,6 +181,11 @@ class Product extends BaseController
                     $cate_id[] = $cate['category_id'];
                 }
                 $tin->category_list = $cate_id;
+            }
+            if (!empty($tin->ProductExt)) {
+                $tin->ProductExt->tastes = unserialize($tin->ProductExt->tastes);
+                $tin->ProductExt->enjoy_guide = unserialize($tin->ProductExt->enjoy_guide);
+                $tin->ProductExt->best_matching_food = unserialize($tin->ProductExt->best_matching_food);
             }
             // echo "<pre>";
             // print_r($tin);

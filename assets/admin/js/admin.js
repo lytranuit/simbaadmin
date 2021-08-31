@@ -16,6 +16,8 @@ $(document).ready(function () {
 });
 
 var fillForm = function (form, data) {
+  console.log(data);
+  var ProductExt = data['ProductExt'];
   $("input, select, textarea", form)
     .not("[type=file]")
     .each(function () {
@@ -23,11 +25,14 @@ var fillForm = function (form, data) {
       var name = $(this).attr("name");
       if (!name) return;
       name = name.replace("[]", "");
-
       var value = "";
       if ($(this).hasClass("input-tmp")) return;
       if ($.type(data[name]) !== "undefined" && $.type(data[name]) !== "null") {
         value = data[name];
+      } else if (name.indexOf("ProductExt") != -1) {
+        name = name.replace(/\[/gi, "['");
+        name = name.replace(/\]/gi, "']");
+        value = eval(name);
       } else {
         return;
       }
