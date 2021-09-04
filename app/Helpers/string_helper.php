@@ -180,16 +180,22 @@ if (!function_exists('html_nestable')) {
         ///Content
         foreach ($return as $row) {
             $sub_html = "";
-
+            $is_deleted = true;
+            if ($row['id'] == 19) {
+                $is_deleted = false;
+            }
+            if ($is_deleted) {
+                $delete_html = '<button class="btn btn-sm btn-outline-light dd-item-delete">
+                <i class="far fa-trash-alt"></i>
+            </button>';
+            }
             $html .= '<li class="dd-item" id="menuItem_' . $row['id'] . '" data-id="' . $row['id'] . '">
                             <div class="dd-handle">
                              ' . $sub_html . '
                                 <div>' . $row['name_vi'] . '</div>
                                 <div class="dd-nodrag btn-group ml-auto">
                                     <a class="btn btn-sm btn-outline-light" href="' . base_url("admin/$controller/edit/" . $row['id']) . '">Edit</a> 
-                                    <button class="btn btn-sm btn-outline-light dd-item-delete">
-                                        <i class="far fa-trash-alt"></i>
-                                    </button>
+                                    ' . $delete_html . '
                                 </div>
                             </div>';
             $html .= html_nestable((array) $array, $column, $row['id'], $controller);
