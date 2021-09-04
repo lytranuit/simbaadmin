@@ -183,6 +183,7 @@
                                     <div class="dd-handle">
                                         <div><?= $row->code ?> - <?= $row->name_vi ?></div>
                                         <div class="dd-nodrag btn-group ml-auto">
+                                            <a class="btn btn-sm btn-outline-light" href="<?= base_url() ?>/admin/product/up/<?= $row->product_id ?>">Up</a>
                                             <a class="btn btn-sm btn-outline-light" href="<?= base_url() ?>/admin/product/edit/<?= $row->product_id ?>">Edit</a>
                                             <a class="btn btn-sm btn-outline-light" href="<?= base_url() ?>/admin/<?= $controller ?>/remove_product/<?= $row->pc_id ?>" data-type="confirm" title="Xóa ra khỏi dạnh mục">
                                                 <i class="far fa-trash-alt"></i>

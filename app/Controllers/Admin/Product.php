@@ -233,7 +233,9 @@ class Product extends BaseController
     public function up($id)
     { /////// trang ca nhan
         $Product_model = model("ProductModel");
-        $data['date'] = date("Y-m-d H:i:s");
+
+        $max_order = $Product_model->get_max_order();
+        $data['sort'] = $max_order;
         $obj = $Product_model->create_object($data);
         $Product_model->update($id, $obj);
         header('Location: ' . $_SERVER['HTTP_REFERER']);
