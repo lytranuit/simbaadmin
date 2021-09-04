@@ -184,6 +184,7 @@ if (!function_exists('html_nestable')) {
             if ($row['id'] == 19) {
                 $is_deleted = false;
             }
+            $delete_html = "";
             if ($is_deleted) {
                 $delete_html = '<button class="btn btn-sm btn-outline-light dd-item-delete">
                 <i class="far fa-trash-alt"></i>
