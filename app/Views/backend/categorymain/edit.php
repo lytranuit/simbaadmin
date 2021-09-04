@@ -32,20 +32,20 @@
                                         <option value="2">Loại 2</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div>-->
 
                             <div class="form-group row">
-                                <b class="col-12 col-lg-2 col-form-label">Hiển thị ở Favorite:</b>
+                                <b class="col-12 col-lg-2 col-form-label">Đăng nhập:</b>
                                 <div class="col-12 col-lg-4 pt-1">
                                     <div class="switch-button switch-button-xs switch-button-success">
-                                        <input type="hidden" class="input-tmp" name="is_favorite" value="0">
-                                        <input type="checkbox" id="switch4" name="is_favorite" value="1">
+                                        <input type="hidden" class="input-tmp" name="must_login" value="0">
+                                        <input type="checkbox" id="switch4" name="must_login" value="1">
                                         <span>
                                             <label for="switch4"></label>
                                         </span>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
                             <ul class="nav nav-tabs">
                                 <li class="nav-item">
                                     <a class="nav-link active" data-toggle="tab" href="#menu0">Tiếng Việt</a>
