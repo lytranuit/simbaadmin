@@ -64,16 +64,16 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <!-- <b class="col-12 col-lg-2 col-form-label">Hiển thị:</b>
+                                <b class="col-12 col-lg-2 col-form-label">Fresh:</b>
                                 <div class="col-12 col-lg-4 pt-1">
                                     <div class="switch-button switch-button-xs switch-button-success">
-                                        <input type="hidden" class="input-tmp" checked="" name="is_pet" value="0">
-                                        <input type="checkbox" checked="" id="switch2" name="is_pet" value="1">
+                                        <input type="hidden" class="input-tmp" checked="" name="is_fresh" value="0">
+                                        <input type="checkbox" checked="" id="switch2" name="is_fresh" value="1">
                                         <span>
                                             <label for="switch2"></label>
                                         </span>
                                     </div>
-                                </div> --->
+                                </div>
                                 <b class="col-12 col-lg-2 col-form-label">
                                     Sắp xếp:
                                     <a class="btn btn-sm btn-success text-white up_order">Up</a>
