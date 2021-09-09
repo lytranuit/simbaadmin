@@ -65,7 +65,7 @@
     <script src="<?= base_url('assets/lib/jquery-validation/jquery.validate.js') ?>"></script>
     <script src="<?= base_url('assets/lib/inputmask/js/jquery.inputmask.bundle.js') ?>"></script>
     <script src="<?= base_url('assets/lib/moment/js/moment.js') ?>"></script>
-    <script src="<?= base_url('assets/admin/js/admin.js?ver=1') ?>"></script>
+    <script src="<?= base_url('assets/admin/js/admin.js?ver=2') ?>"></script>
     <?php if (!empty($javascript_tag)) : ?>
         <?php foreach ($javascript_tag as $url) : ?>
             <script src="<?= $url ?>" type="text/javascript"></script>

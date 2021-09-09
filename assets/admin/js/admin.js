@@ -29,7 +29,7 @@ var fillForm = function (form, data) {
       if ($(this).hasClass("input-tmp")) return;
       if ($.type(data[name]) !== "undefined" && $.type(data[name]) !== "null") {
         value = data[name];
-      } else if (name.indexOf("ProductExt") != -1) {
+      } else if (name.indexOf("ProductExt") != -1 && ProductExt != null) {
         name = name.replace(/\[/gi, "['");
         name = name.replace(/\]/gi, "']");
         value = eval(name);

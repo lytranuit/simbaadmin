@@ -391,6 +391,17 @@
                                                                 <input class="form-control form-control-sm" type='text' name="ProductExt[brewery_en]" />
                                                             </div>
                                                         </div>
+
+                                                        <div class="col-3">
+                                                            <b class="col-form-label d-inline-block">Loại rượu:</b>
+                                                            <div class="">
+                                                                <select class="form-control form-control-sm" name="ProductExt[cat_type]">
+                                                                    <option value="1">Sake</option>
+                                                                    <option value="2">Shochu</option>
+                                                                    <option value="3">Đồ uống khác</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
                                                         <div class="col-12">
                                                             <b class="col-form-label d-inline-block">Đặc điểm:</b>
                                                             <div class="">
