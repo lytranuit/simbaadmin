@@ -77,10 +77,21 @@
                                 <b class="col-12 col-lg-2 col-form-label">
                                     Sắp xếp:
                                     <a class="btn btn-sm btn-success text-white up_order">Up</a>
-
                                 </b>
                                 <div class="col-12 col-lg-4 pt-1">
                                     <input class="form-control form-control-sm order" type='number' name="sort" />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <b class="col-12 col-lg-2 col-form-label">Loại rượu:</b>
+                                <div class="col-12 col-lg-4 pt-1">
+                                    <select class="form-control form-control-sm" name="ProductExt[cat_type]">
+                                        <option>Chọn loại rượu</option>
+                                        <option value="1">Sake</option>
+                                        <option value="2">Shochu</option>
+                                        <option value="3">Đồ uống khác</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -392,16 +403,6 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-3">
-                                                            <b class="col-form-label d-inline-block">Loại rượu:</b>
-                                                            <div class="">
-                                                                <select class="form-control form-control-sm" name="ProductExt[cat_type]">
-                                                                    <option value="1">Sake</option>
-                                                                    <option value="2">Shochu</option>
-                                                                    <option value="3">Đồ uống khác</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
                                                         <div class="col-12">
                                                             <b class="col-form-label d-inline-block">Đặc điểm:</b>
                                                             <div class="">
