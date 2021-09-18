@@ -16,9 +16,10 @@
                             <th>Hình ảnh</th>
                             <th>Mã</th>
                             <th>Tên</th>
-                            <th>Giá</th>
-                            <th>Hiển thị</th>
-                            <th>Hành động</th>
+                            <th>Giá lẻ</th>
+                            <th>Giá sĩ</th>
+                            <th>Fresh</th>
+                            <th>Rượu</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,16 +65,44 @@
                     "data": "name_vi"
                 },
                 {
-                    "data": "price"
+                    "data": "retain_price"
                 },
                 {
-                    "data": "active"
+                    "data": "wholesale_price"
                 },
                 {
-                    "data": "action"
-                }
+                    "data": "fresh"
+                },
+                {
+                    "data": "alcohol"
+                },
             ]
 
+        });
+        $(document).on("change", "[name=is_fresh]", function() {
+            let is_fresh = +$(this).is(":checked");
+            let id = $(this).val();
+            $.ajax({
+                url: path + "admin/product/update/" + id,
+                data: {
+                    is_fresh: is_fresh
+                },
+                dataType: "JSON",
+                type: "POST"
+            });
+        });
+
+        $(document).on("change", "[name=is_alcohol]", function() {
+            let is_alcohol = +$(this).is(":checked");
+            let id = $(this).val();
+            $.ajax({
+                url: path + "admin/product/update/" + id,
+                data: {
+                    is_alcohol: is_alcohol
+                },
+                dataType: "JSON",
+                type: "POST"
+            });
         });
     });
 </script>

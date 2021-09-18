@@ -242,6 +242,15 @@ class Product extends BaseController
         exit;
     }
 
+    public function update($id)
+    { /////// trang ca nhan
+        $Product_model = model("ProductModel");
+        $data = $_POST;
+        $obj = $Product_model->create_object($data);
+        $Product_model->update($id, $obj);
+    }
+
+
     public function save_dvt()
     {
         if (isset($_POST['cap_nhat'])) {
@@ -295,20 +304,40 @@ class Product extends BaseController
         $data = array();
         if (!empty($posts)) {
             foreach ($posts as $post) {
-                $nestedData['id'] = $post->id;
+                $nestedData['id'] = '<a href="' . base_url("admin/product/edit/" . $post->id) . '" title="edit">'
+                    . '<i class="fas fa-pencil-alt mr-2">'
+                    . '</i>'
+                    . $post->id
+                    . '</a>';
                 $nestedData['code'] = $post->code;
                 $nestedData['name_vi'] = $post->name_vi;
                 $image = "https://simbaeshop.com/$post->image_url";
                 $nestedData['image'] = "<img src='$image' width='100'/>";
-                $nestedData['active'] = $post->status == 1 ? '<i class="text-success far fa-check-circle"></i>' : '<i class="text-danger far fa-times-circle"></i>';
-                $nestedData['active'] = '<div class="text-center">' . $nestedData['active'] . '</div>';
-                $nestedData['price'] =  isset($post->pet->price) && $post->pet->price != "" ? number_format($post->pet->price, 0, ",", ".") . " VND" : number_format($post->retail_price, 0, ",", ".") . " VND";
+                // $nestedData['active'] = $post->status == 1 ? '<i class="text-success far fa-check-circle"></i>' : '<i class="text-danger far fa-times-circle"></i>';
+                // $nestedData['active'] = '<div class="text-center">' . $nestedData['active'] . '</div>';
+
+                $nestedData['retain_price'] =  number_format($post->retail_price, 0, ",", ".") . " VND";
+                $nestedData['wholesale_price'] = number_format($post->wholesale_price, 0, ",", ".") . " VND";
+
+                $nestedData['fresh'] = '<div class="switch-button switch-button-xs switch-button-success">
+                                        <input type="checkbox" ' . ($post->is_fresh ? 'checked' : '') . ' id="switch-fresh-' . $post->id . '" name="is_fresh" value="' . $post->id . '">
+                                        <span>
+                                            <label for="switch-fresh-' . $post->id . '"></label>
+                                        </span>
+                                    </div>';
+
+                $nestedData['alcohol'] = '<div class="switch-button switch-button-xs switch-button-success">
+                                <input type="checkbox" ' . ($post->is_alcohol ? 'checked' : '') . ' id="switch-alcohol-' . $post->id . '" name="is_alcohol" value="' . $post->id . '">
+                                <span>
+                                    <label for="switch-alcohol-' . $post->id . '"></label>
+                                </span>
+                            </div>';
                 // $image = isset($post->image->src) ? base_url() . $post->image->src : "";
                 // $nestedData['image'] = "<img src='$image' width='100'/>";
-                $nestedData['action'] = '<a href="' . base_url("admin/product/edit/" . $post->id) . '" class="btn btn-warning btn-sm mr-2" title="edit">'
-                    . '<i class="fas fa-pencil-alt">'
-                    . '</i>'
-                    . '</a>';
+                // $nestedData['action'] = '<a href="' . base_url("admin/product/edit/" . $post->id) . '" class="btn btn-warning btn-sm mr-2" title="edit">'
+                //     . '<i class="fas fa-pencil-alt">'
+                //     . '</i>'
+                //     . '</a>';
 
                 $data[] = $nestedData;
             }
