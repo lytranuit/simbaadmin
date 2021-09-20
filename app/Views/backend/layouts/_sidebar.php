@@ -68,6 +68,13 @@
                         Sản phẩm
                     </a>
                 </li>
+                <li class="app-sidebar__heading">Khách hàng</li>
+                <li>
+                    <a href="<?= base_url() ?>/admin/customer/" class="">
+                        <i class="metismenu-icon fas fa-user-tie"></i>
+                        Khách hàng
+                    </a>
+                </li>
                 <!-- <li>
                     <a href="<?= base_url() ?>/admin/productprice/" class="">
                         <i class="metismenu-icon fas fa-ad"></i>

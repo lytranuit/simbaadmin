@@ -14,7 +14,7 @@ class ProductModel extends Model
     protected $returnType     = 'App\Entities\Product';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['is_fresh', 'is_alcohol', 'region', 'image_url', 'name_vi', 'name_en', 'name_jp', 'description_vi', 'description_en', 'description_jp', 'volume_vi', 'volume_en', 'volume_jp', 'guide_vi', 'guide_en', 'guide_jp', 'detail_vi', 'detail_en', 'detail_jp', 'element_vi', 'element_en', 'element_jp', 'origin_country_id', 'preservation_id', 'sort'];
+    protected $allowedFields = ['is_b2b', 'is_b2c', 'is_fresh', 'is_alcohol', 'region', 'image_url', 'name_vi', 'name_en', 'name_jp', 'description_vi', 'description_en', 'description_jp', 'volume_vi', 'volume_en', 'volume_jp', 'guide_vi', 'guide_en', 'guide_jp', 'detail_vi', 'detail_en', 'detail_jp', 'element_vi', 'element_en', 'element_jp', 'origin_country_id', 'preservation_id', 'sort'];
 
 
     public function relation(&$data, $relation = array())
@@ -58,6 +58,11 @@ class ProductModel extends Model
                 $builder = $this->db->table('new_product_ext');
                 $row_a->ProductExt = $builder->where('product_id', $product_id)->get()->getFirstRow();
             }
+            if (in_array("forCustomers", $relation)) {
+                $product_id = $row_a->id;
+                $builder = $this->db->table('product_private')->join("customer", "product_private.customer_id = customer.id");
+                $row_a->forCustomers = $builder->where('product_id', $product_id)->where('product_private.deleted', 0)->select('customer.*', false)->get()->getResult();
+            }
         } else {
             if (in_array("image_other", $relation)) {
                 $product_id = $row_a['id'];
@@ -83,6 +88,11 @@ class ProductModel extends Model
                 $product_id = $row_a['id'];
                 $builder = $this->db->table('new_product_ext');
                 $row_a['ProductExt'] = $builder->where('product_id', $product_id)->get()->getFirstRow("array");
+            }
+            if (in_array("forCustomers", $relation)) {
+                $product_id = $row_a['id'];
+                $builder = $this->db->table('product_private')->join("customer", "product_private.customer_id = customer.id");
+                $row_a['forCustomers'] = $builder->where('product_id', $product_id)->where('product_private.deleted', 0)->select('customer.*', false)->get()->getResult('array');
             }
         }
         return $row_a;

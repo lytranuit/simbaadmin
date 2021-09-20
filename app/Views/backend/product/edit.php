@@ -95,6 +95,41 @@
                                     </select>
                                 </div>
                             </div>
+
+                            <div class="form-group row">
+
+                                <b class="col-12 col-lg-2 col-form-label">B2B:</b>
+                                <div class="col-12 col-lg-4 pt-1">
+                                    <div class="switch-button switch-button-xs switch-button-success">
+                                        <input type="hidden" class="input-tmp" checked="" name="is_b2b" value="0">
+                                        <input type="checkbox" checked="" id="switch3" name="is_b2b" value="1">
+                                        <span>
+                                            <label for="switch3"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                                <b class="col-12 col-lg-2 col-form-label">B2C:</b>
+                                <div class="col-12 col-lg-4 pt-1">
+                                    <div class="switch-button switch-button-xs switch-button-success">
+                                        <input type="hidden" class="input-tmp" checked="" name="is_b2c" value="0">
+                                        <input type="checkbox" checked="" id="switch4" name="is_b2c" value="1">
+                                        <span>
+                                            <label for="switch4"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <b class="col-12 col-lg-2 col-form-label">Nhãn hàng riêng:</b>
+                                <div class="col-12 col-lg-10 pt-1">
+                                    <select name="customer_list[]" class="form-control form-control-sm" multiple>
+                                        <?php foreach ($customers as $customer) : ?>
+                                            <option value="<?= $customer->id ?>"><?= $customer->code ?> - <?= $customer->name ?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                </div>
+
+                            </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group row">
@@ -300,7 +335,7 @@
                                                                 <th>Tiếng Việt</th>
                                                                 <th>Tiếng Anh</th>
                                                                 <th>Tiếng Nhật</th>
-                                                                <th>Giá</th>
+                                                                <th>Hệ số</th>
                                                                 <th>Hành động</th>
                                                             </tr>
                                                         </thead>
@@ -775,10 +810,8 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-                </div>
             </section>
         </form>
     </div>
@@ -822,12 +855,6 @@
                                 <input name="special_unit" type='number' class="form-control" placeholder="Hệ số">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <b class="form-label">Giá:<i class="text-danger">*</i></b>
-                            <div class="form-line">
-                                <input name="price" type='text' required class="price form-control" placeholder="Giá">
-                            </div>
-                        </div>
                         <div class="text-center">
                             <button class="btn btn-primary waves-effect" type="submit" name="cap_nhat">Cập nhật</button>
                         </div>
@@ -853,6 +880,7 @@
 
 
 <script src="<?= base_url("assets/lib/chosen/chosen.jquery.js") ?>"></script>
+<script src="<?= base_url("assets/lib/ajaxchosen/chosen.ajaxaddition.jquery.js") ?>"></script>
 <script src="<?= base_url('assets/lib/datatables/datatables.min.js') ?>"></script>
 <script src="<?= base_url('assets/lib/datatables/jquery.highlight.js') ?>"></script>
 
@@ -873,6 +901,16 @@
             CKEDITOR.replace(allEditors[i]);
         }
 
+        $("[name='customer_list[]']").ajaxChosen({
+            dataType: 'json',
+            type: 'POST',
+            url: path + "admin/product/customerlist",
+        }, {
+            loadingImg: path + 'public/img/loading.gif'
+        }, {
+            width: "100%",
+            allow_single_deselect: true
+        });
         $(".image_ft").imageFeature();
         $(".multiple_image").imageFeature({
             multiple: true,
@@ -910,7 +948,7 @@
                     "data": "name_jp"
                 },
                 {
-                    "data": "price_format"
+                    "data": "special_unit"
                 },
                 {
                     "data": "action"
@@ -935,7 +973,6 @@
             for (let i = 0; i < tin.units.length; i++) {
                 let data = tin.units[i];
                 data['action'] = '<a href="#" class="btn btn-warning btn-sm dvt_edit mr-2" data-target="#dvt-modal" data-toggle="modal" data-id="' + data['id'] + '"><i class="fas fa-pencil-alt"></i></a><a href="#" class="btn btn-danger btn-sm dvt_remove" data-id="' + data['id'] + '"><i class="far fa-trash-alt"></i></a>';
-                data['price_format'] = number_format(data['price'], 0, ",", ".") + " VND";
                 $('#quanly').dataTable().fnAddData(data);
             }
         }

@@ -19,6 +19,7 @@ class Product extends BaseController
 
             $Product_model = model("ProductModel");
             $ProductUnit_model = model("ProductUnitModel");
+            $ProductPrivate_model = model("ProductPrivateModel");
             $ProductExt_model = model("ProductExtModel");
             $Product_category_model = model("ProductCategoryModel");
             $Product_image_model = model("ProductImageModel");
@@ -97,6 +98,23 @@ class Product extends BaseController
                 $Product_category_model->where($array)->delete();
             }
 
+
+            /*Private*/
+
+            $related_new = array();
+            if (isset($data['customer_list'])) {
+                $related_new = array_merge($related_new, $data['customer_list']);
+                unset($data['customer_list']);
+            }
+            $ProductPrivate_model->where('product_id', $id)->delete();
+            foreach ($related_new as $row) {
+                $array = array(
+                    'customer_id' => $row,
+                    'product_id' => $id
+                );
+                $ProductPrivate_model->insert($array);
+            }
+
             /* SP lien quan */
             // $array = $ProductRelated_model->where('product_id', $id)->asArray()->findAll();
             // $related_old = array_map(function ($item) {
@@ -159,14 +177,16 @@ class Product extends BaseController
             $Product_model = model("ProductModel");
             $category_model = model("CategoryModel");
             $origin_model = model("OriginModel");
+            $customer_model = model("CustomerModel");
             $preservation_model = model("PreservationModel");
             $Product_category_model = model("ProductCategoryModel");
             $Product_related_model = model("ProductRelatedModel");
             $tin = $Product_model->where(array('id' => $id))->asObject()->first();
-            $Product_model->relation($tin, array('image_other', 'units', 'ProductExt'));
+            $Product_model->relation($tin, array('image_other', 'units', 'ProductExt', 'forCustomers'));
             // echo "<pre>";
             // print_r($tin);
             // die();
+
             /*Releated*/
             // $product_related = $Product_related_model->where(array('product_id' => $id))->findAll();
 
@@ -181,6 +201,13 @@ class Product extends BaseController
                     $cate_id[] = $cate['category_id'];
                 }
                 $tin->category_list = $cate_id;
+            }
+            if (!empty($tin->forCustomers)) {
+                $customer_id = array();
+                foreach ($tin->forCustomers as $key => $customer) {
+                    $customer_id[] = $customer->id;
+                }
+                $tin->customer_list = $customer_id;
             }
             if (!empty($tin->ProductExt)) {
                 $tin->ProductExt->tastes = unserialize($tin->ProductExt->tastes);
@@ -220,8 +247,10 @@ class Product extends BaseController
                 ->orderBy('parent_id', 'ASC')->orderBy('sort', 'ASC')->asArray()->findAll();
             $this->data['category2'] = html_product_category_nestable($this->data['category2'], 'parent_id', 0);
 
-
-
+            $this->data['customers'] = $tin->forCustomers;
+            // echo "<pre>";
+            // print_r($this->data['customers']);
+            // die();
             $this->data['origin'] = $origin_model->findAll();
             $this->data['preservation'] = $preservation_model->findAll();
             $this->data['max_order'] = $Product_model->get_max_order();
@@ -271,6 +300,20 @@ class Product extends BaseController
             echo json_encode($unit);
         }
     }
+
+    public function customerlist()
+    {
+        $CustomerModel = model("CustomerModel");
+        $data = $this->request->getPost('data');
+        $search = $data['q'];
+        $data = $CustomerModel->where("(code like '%$search%' OR name like '%$search%')")->asArray()->paginate(1000, '', 0);
+        $results = array();
+        foreach ($data as $row) {
+            $results[] = array("id" => $row['id'], 'text' => $row['code'] . ' - ' . $row['name']);
+        }
+        echo json_encode(array('q' => $search, 'results' => $results));
+        die();
+    }
     public function table()
     {
         $Product_model = model("ProductModel");
@@ -296,7 +339,6 @@ class Product extends BaseController
             $where = $Product_model->where($sWhere);
         }
 
-        $where = $Product_model;
         $posts = $where->asObject()->orderby("id", "DESC")->paginate($limit, '', $page);
         // echo "<pre>";
         // print_r($posts);
