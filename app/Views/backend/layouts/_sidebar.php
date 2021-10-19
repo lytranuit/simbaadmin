@@ -99,6 +99,12 @@
                 </li>
                 <li class="app-sidebar__heading">Cài đặt</li>
                 <li>
+                    <a href="<?= base_url() ?>/admin/holiday" class="">
+                        <i class="metismenu-icon fas fa-wrench"></i>
+                        Ngày nghĩ
+                    </a>
+                </li>
+                <li>
                     <a href="<?= base_url() ?>/admin/settings" class="">
                         <i class="metismenu-icon fas fa-wrench"></i>
                         Cài đặt chung
