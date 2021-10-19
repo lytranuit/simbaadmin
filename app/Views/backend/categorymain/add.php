@@ -46,6 +46,16 @@
                                         </span>
                                     </div>
                                 </div>
+                                <b class="col-12 col-lg-2 col-form-label">Yêu cầu > 18t:</b>
+                                <div class="col-12 col-lg-4 pt-1">
+                                    <div class="switch-button switch-button-xs switch-button-success">
+                                        <input type="hidden" class="input-tmp" name="require_year_old" value="0">
+                                        <input type="checkbox" id="switch5" name="require_year_old" value="1">
+                                        <span>
+                                            <label for="switch5"></label>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                             <ul class="nav nav-tabs">
                                 <li class="nav-item">
