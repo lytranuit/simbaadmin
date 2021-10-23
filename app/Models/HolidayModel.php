@@ -9,7 +9,7 @@ class HolidayModel extends Model
     protected $table      = 'holiday';
     protected $primaryKey = 'id';
 
-    protected $returnType     = 'object';
+    protected $returnType     = 'App\Entities\Holiday';
     protected $useSoftDeletes = false;
 
     protected $allowedFields = ['note', 'active', 'holiday'];
