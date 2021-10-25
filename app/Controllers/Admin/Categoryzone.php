@@ -45,11 +45,21 @@ class Categoryzone extends BaseController
         if (isset($_POST['dangtin'])) {
 
             $Category_model = model("CategoryModel");
+            $product_category_model = model("ProductCategoryModel");
             $data = $this->request->getPost();
 
             $obj = $Category_model->create_object($data);
             // print_r($obj);die();
             $Category_model->update($id, $obj);
+            if (isset($data['product_category'])) {
+                foreach ($data['product_category'] as $key => $row) {
+                    $data_up = array(
+                        'order' => $key,
+                        'category_id' => $id
+                    );
+                    $product_category_model->update($row, $data_up);
+                }
+            }
             return redirect()->to(base_url('admin/' . $this->data['controller']));
         } else {
             $Category_model = model("CategoryModel");

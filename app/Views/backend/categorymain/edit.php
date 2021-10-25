@@ -193,7 +193,6 @@
                                     <div class="dd-handle">
                                         <div><?= $row->code ?> - <?= $row->name_vi ?></div>
                                         <div class="dd-nodrag btn-group ml-auto">
-                                            <a class="btn btn-sm btn-outline-light" href="<?= base_url() ?>/admin/product/up/<?= $row->product_id ?>">Up</a>
                                             <a class="btn btn-sm btn-outline-light" href="<?= base_url() ?>/admin/product/edit/<?= $row->product_id ?>">Edit</a>
                                             <a class="btn btn-sm btn-outline-light" href="<?= base_url() ?>/admin/<?= $controller ?>/remove_product/<?= $row->pc_id ?>" data-type="confirm" title="Xóa ra khỏi dạnh mục">
                                                 <i class="far fa-trash-alt"></i>
@@ -281,6 +280,16 @@
                 $(element).parents('.form-group').append(error);
             },
             submitHandler: function(form) {
+                var arraied = $('#nestable').nestedSortable('toArray', {
+                    excludeRoot: true
+                });
+                console.log(arraied);
+                let append = "";
+                for (var i = 0; i < arraied.length; i++) {
+                    let id = arraied[i]['id'];
+                    append += "<input type='hidden' name='product_category[]' value='" + id + "' />";
+                }
+                $(form).append(append);
                 form.submit();
                 return false;
             }
