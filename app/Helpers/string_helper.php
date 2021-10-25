@@ -181,7 +181,7 @@ if (!function_exists('html_nestable')) {
         foreach ($return as $row) {
             $sub_html = "";
             $is_deleted = true;
-            if ($row['id'] == 19) {
+            if ($row['id'] == 19 || $row['id'] == 20) {
                 $is_deleted = false;
             }
             $delete_html = "";
