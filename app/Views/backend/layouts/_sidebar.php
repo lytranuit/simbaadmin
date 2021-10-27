@@ -47,15 +47,15 @@
                     </a>
                 </li>
                 </li>
-                <li class="app-sidebar__heading">Tin tức</li>
+                <li class="app-sidebar__heading">Công thức nấu ăn</li>
                 <li>
-                    <a href="<?= base_url() ?>/admin/post/" class="">
+                    <a href="<?= base_url() ?>/admin/recipe/" class="">
                         <i class="metismenu-icon fas fa-newspaper"></i>
-                        Tin tức
+                        Công thức nấu ăn
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url() ?>/admin/tag/" class="">
+                    <a href="<?= base_url() ?>/admin/categoryrecipe/" class="">
                         <i class="metismenu-icon fas fa-tags"></i>
                         Danh mục
                     </a>

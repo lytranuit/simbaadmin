@@ -191,9 +191,8 @@
                             <?php foreach ($products as $row) : ?>
                                 <li class="dd-item ui-sortable-handle" id="menuItem_<?= $row->pc_id ?>" data-id="<?= $row->pc_id ?>">
                                     <div class="dd-handle">
-                                        <div><?= $row->code ?> - <?= $row->name_vi ?></div>
+                                        <div><a href="<?= base_url() ?>/admin/product/edit/<?= $row->product_id ?>"><?= $row->code ?> - <?= $row->name_vi ?></a></div>
                                         <div class="dd-nodrag btn-group ml-auto">
-                                            <a class="btn btn-sm btn-outline-light" href="<?= base_url() ?>/admin/product/edit/<?= $row->product_id ?>">Edit</a>
                                             <a class="btn btn-sm btn-outline-light" href="<?= base_url() ?>/admin/<?= $controller ?>/remove_product/<?= $row->pc_id ?>" data-type="confirm" title="Xóa ra khỏi dạnh mục">
                                                 <i class="far fa-trash-alt"></i>
                                             </a>

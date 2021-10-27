@@ -169,31 +169,31 @@
     <div class="col-12">
         <div class="card card-fluid">
             <div class="card-header">
-                Sản phẩm
+                Công thức nấu ăn
                 <div class="ml-auto">
-                    <select class="form-control product_add" multiple>
-                        <?php foreach ($products_add as $row) : ?>
-                            <option value="<?= $row->id ?>" <?= in_array($row->id, $products_disable) ? "disabled" : "" ?>>
-                                <?= $row->code ?> - <?= $row->name_vi ?>
+                    <select class="form-control recipe_add" multiple>
+                        <?php foreach ($recipes_add as $row) : ?>
+                            <option value="<?= $row->id ?>" <?= in_array($row->id, $recipes_disable) ? "disabled" : "" ?>>
+                                <?= $row->name_vi ?>
                             </option>
                         <?php endforeach ?>
                     </select>
-                    <button class="btn btn-success add_product">
+                    <button class="btn btn-success add_recipe">
                         Add
                     </button>
                 </div>
             </div>
             <div class="card-body">
 
-                <?php if (!empty($products)) : ?>
+                <?php if (!empty($recipes)) : ?>
                     <div class="dd" id="nestable2">
                         <ol class="dd-list ui-sortable" id="nestable">
-                            <?php foreach ($products as $row) : ?>
+                            <?php foreach ($recipes as $row) : ?>
                                 <li class="dd-item ui-sortable-handle" id="menuItem_<?= $row->pc_id ?>" data-id="<?= $row->pc_id ?>">
                                     <div class="dd-handle">
-                                        <div><a href="<?= base_url() ?>/admin/product/edit/<?= $row->product_id ?>"><?= $row->code ?> - <?= $row->name_vi ?></a></div>
+                                        <div><a href="<?= base_url() ?>/admin/recipe/edit/<?= $row->recipe_id ?>"><?= $row->name_vi ?></a></div>
                                         <div class="dd-nodrag btn-group ml-auto">
-                                            <a class="btn btn-sm btn-outline-light" href="<?= base_url() ?>/admin/<?= $controller ?>/remove_product/<?= $row->pc_id ?>" data-type="confirm" title="Xóa ra khỏi dạnh mục">
+                                            <a class="btn btn-sm btn-outline-light" href="<?= base_url() ?>/admin/<?= $controller ?>/remove_recipe/<?= $row->pc_id ?>" data-type="confirm" title="Xóa ra khỏi dạnh mục">
                                                 <i class="far fa-trash-alt"></i>
                                             </a>
                                         </div>
@@ -286,7 +286,7 @@
                 let append = "";
                 for (var i = 0; i < arraied.length; i++) {
                     let id = arraied[i]['id'];
-                    append += "<input type='hidden' name='product_category[]' value='" + id + "' />";
+                    append += "<input type='hidden' name='recipe_category[]' value='" + id + "' />";
                 }
                 $(form).append(append);
                 form.submit();
@@ -300,17 +300,16 @@
             maxLevels: 1,
             placeholder: 'dd-placeholder',
         });
-        $(".add_product").click(function() {
-
-            let product = $(".product_add").val();
+        $(".add_recipe").click(function() {
+            let recipe = $(".recipe_add").val();
             let category_id = tin['id'];
             $.ajax({
                 type: "POST",
                 data: {
-                    data: JSON.stringify(product),
+                    data: JSON.stringify(recipe),
                     category_id: category_id,
                 },
-                url: path + "admin/" + controller + "/addproductcategory",
+                url: path + "admin/" + controller + "/addrecipecategory",
                 success: function(msg) {
                     // alert("Success!");
                     location.reload();
