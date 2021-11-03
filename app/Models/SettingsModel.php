@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class OptionModel extends Model
+class SettingsModel extends Model
 {
-    protected $table      = 'pet_options';
+    protected $table      = 'settings';
     protected $primaryKey = 'id';
 
     protected $returnType     = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['value'];
+    protected $allowedFields = ['opt_key', 'name', 'name_en', 'name_vi', 'opt_value', 'opt_value_en', 'opt_value_jp', "group_name"];
 
     //protected $useTimestamps = false;
     //protected $createdField  = 'created_at';
@@ -22,17 +22,13 @@ class OptionModel extends Model
     //protected $validationRules    = [];
     //protected $validationMessages = [];
     //protected $skipValidation     = true;
-    function get_options_in($id)
+    function get_options_groups($group)
     {
-        if (!is_array($id)) {
-            $id = array($id);
-        }
-
-        $builder = $this->db->table('cf_options');
-        $rows = $builder->whereIn('key', $id)->get()->getResult("array");
+        $builder = $this->db->table('settings');
+        $rows = $builder->where('group_name', $group)->get()->getResult("array");
         $return = array();
         foreach ($rows as $row) {
-            $return[$row['key']] = $row['value'];
+            $return[$row['opt_key']] = $row;
         }
         return $return;
     }

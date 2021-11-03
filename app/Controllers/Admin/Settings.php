@@ -9,45 +9,23 @@ class Settings extends BaseController
     {
         if (isset($_POST['post'])) {
             $data = $_POST;
-            $option_model = model("OptionModel");
-
+            $SettingsModel = model("SettingsModel");
             foreach ($data['id'] as $key => $id) {
-                $value = $data['value'][$key];
-                $option_model->update($id, array('value' => $value));
+                $opt_value = $data['opt_value'][$key];
+                $opt_value_en = $data['opt_value_en'][$key];
+                $opt_value_jp = $data['opt_value_jp'][$key];
+                $SettingsModel->update($id, array('opt_value' => $opt_value, 'opt_value_en' => $opt_value_en, 'opt_value_jp' => $opt_value_jp));
             }
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             exit;
         } else {
-            $option_model = model("OptionModel");
+            $SettingsModel = model("SettingsModel");
+            $commons = $SettingsModel->get_options_groups("common");
+            // echo "<pre>";
+            // print_r($commons);
+            // die();
+            $this->data['commons'] = $commons;
 
-            $tins = $option_model->where("group", 'general')->orderBy("order", "asc")->findAll();
-            //echo "<pre>";
-            //print_r($tins);
-            //die();
-            $this->data['tins'] = $tins;
-
-            return view($this->data['content'], $this->data);
-        }
-    }
-    public function sendemail()
-    { /////// trang ca nhan
-        $option_model = model("OptionModel");
-        if (isset($_POST['settings'])) {
-            $data = $_POST;
-            foreach ($data['id'] as $key => $id) {
-                $value = $data['value'][$key];
-                $option_model->update($id, array('value' => $value));
-            }
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
-            exit;
-        } else {
-            $tins = $option_model->where("group", 'send_mail')->orderBy("order", "asc")->asObject()->findAll();
-            $this->data['tins'] = $tins;
-
-            load_editor($this->data);
-            //            echo "<pre>";
-            //            print_r($tins);
-            //            die();
             return view($this->data['content'], $this->data);
         }
     }

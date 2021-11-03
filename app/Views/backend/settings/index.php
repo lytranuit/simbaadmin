@@ -16,39 +16,31 @@
                     </div>
                 </h5>
                 <div class="card-body">
-                    <?php foreach ($tins as $tin) : ?>
+                    <?php foreach ($commons as $tin) : ?>
+                        <?php if ($tin['opt_key'] == 'note_order') : ?>
 
-                        <div class="form-group row">
-                            <b class="col-12 col-sm-3 col-form-label text-sm-right">
-                                <?= $tin['title'] ?>:
-                                <p class="small text-muted"> <?= $tin['comment'] ?></p>
-                            </b>
-                            <div class="col-12 col-sm-8 col-lg-6 pt-1">
-                                <input type='hidden' name="id[]" value="<?= $tin['id'] ?>" />
-                                <?php if ($tin['type'] == 'varchar') : ?>
-                                    <input class="form-control" type='text' name="value[]" value="<?= $tin['value'] ?>" />
-                                <?php elseif ($tin['type'] == 'text') : ?>
-
-                                    <textarea class="form-control" name="value[]"><?= $tin['value'] ?></textarea>
-                                <?php elseif ($tin['type'] == 'bool') : ?>
-                                    <?php
-                                    $checked = "";
-                                    if ($tin['value'] != 0)
-                                        $checked = "checked";
-                                    ?>
-                                    <div class="switch-button switch-button-success">
-                                        <input type="checkbox" <?= $checked ?> name="value[]" id="switch<?= $tin['id'] ?>" value="1">
-                                        <span>
-                                            <label for="switch<?= $tin['id'] ?>"></label>
-                                        </span>
-                                    </div>
-                                <?php elseif ($tin['type'] == 'page') : ?>
-                                    <textarea class="form-control edit" name="value[]"><?= $tin['value'] ?></textarea>
-                                <?php elseif ($tin['type'] == 'number') : ?>
-                                    <input class="form-control" type='number' name="value[]" value='<?= $tin['value'] ?>' />
-                                <?php endif ?>
+                            <input type='hidden' name="id[]" value="<?= $tin['id'] ?>" />
+                            <div class="form-group row">
+                                <b class="col-12 col-form-label">
+                                    <?= $tin['name'] ?>:
+                                </b>
+                                <div class="col-12 pt-1">
+                                    <textarea class="form-control" name="opt_value[]"><?= $tin['opt_value'] ?></textarea>
+                                </div>
+                                <b class="col-12 col-form-label">
+                                    <?= $tin['name_en'] ?>:
+                                </b>
+                                <div class="col-12 pt-1">
+                                    <textarea class="form-control" name="opt_value_en[]"><?= $tin['opt_value_en'] ?></textarea>
+                                </div>
+                                <b class="col-12 col-form-label">
+                                    <?= $tin['name_jp'] ?>:
+                                </b>
+                                <div class="col-12 pt-1">
+                                    <textarea class="form-control" name="opt_value_jp[]"><?= $tin['opt_value_jp'] ?></textarea>
+                                </div>
                             </div>
-                        </div>
+                        <?php endif ?>
                     <?php endforeach ?>
                 </div>
                 <div class="card-footer">
