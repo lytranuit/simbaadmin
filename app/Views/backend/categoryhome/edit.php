@@ -68,6 +68,29 @@
                                     </div>
                                 </div>
                             </div>
+                            
+                            <div class="form-group row">
+                                <b class="col-12 col-lg-2 col-form-label">Rượu:</b>
+                                <div class="col-12 col-lg-4 pt-1">
+                                    <div class="switch-button switch-button-xs switch-button-success">
+                                        <input type="hidden" class="input-tmp" name="is_alcohol" value="0">
+                                        <input type="checkbox" id="switch4" name="is_alcohol" value="1">
+                                        <span>
+                                            <label for="switch4"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                                <b class="col-12 col-lg-2 col-form-label">Chỉ hiện thị menu:</b>
+                                <div class="col-12 col-lg-4 pt-1">
+                                    <div class="switch-button switch-button-xs switch-button-success">
+                                        <input type="hidden" class="input-tmp" name="only_show_menu" value="0">
+                                        <input type="checkbox" id="switch5" name="only_show_menu" value="1">
+                                        <span>
+                                            <label for="switch5"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                             <ul class="nav nav-tabs">
                                 <li class="nav-item">
                                     <a class="nav-link active" data-toggle="tab" href="#menu0">Tiếng Việt</a>
