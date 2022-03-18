@@ -68,8 +68,8 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                          
+
+
                             <div class="form-group row">
                                 <b class="col-12 col-lg-2 col-form-label">Rượu:</b>
                                 <div class="col-12 col-lg-4 pt-1">
@@ -88,6 +88,29 @@
                                         <input type="checkbox" id="switch7" name="only_show_menu" value="1">
                                         <span>
                                             <label for="switch7"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <b class="col-12 col-lg-2 col-form-label">B2B:</b>
+                                <div class="col-12 col-lg-4 pt-1">
+                                    <div class="switch-button switch-button-xs switch-button-success">
+                                        <input type="hidden" class="input-tmp" name="is_b2b" value="0">
+                                        <input type="checkbox" id="switch8" name="is_b2b" value="1">
+                                        <span>
+                                            <label for="switch8"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                                <b class="col-12 col-lg-2 col-form-label">B2C:</b>
+                                <div class="col-12 col-lg-4 pt-1">
+                                    <div class="switch-button switch-button-xs switch-button-success">
+                                        <input type="hidden" class="input-tmp" name="is_b2c" value="0">
+                                        <input type="checkbox" id="switch9" name="is_b2c" value="1">
+                                        <span>
+                                            <label for="switch9"></label>
                                         </span>
                                     </div>
                                 </div>
