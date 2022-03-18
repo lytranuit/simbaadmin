@@ -73,13 +73,20 @@ class Holiday extends BaseController
         $page = ($start / $limit) + 1;
         $where = $Holiday_model;
 
-        $totalData = $where->countAllResults();
+        $totalData = $where->countAllResults(false);
         //echo "<pre>";
         //print_r($totalData);
         //die();
-        $totalFiltered = $totalData;
+        if (empty($this->request->getPost('search')['value'])) {
+            //            $max_page = ceil($totalFiltered / $limit);
 
-        $where = $Holiday_model;
+            $totalFiltered = $totalData;
+        } else {
+            $search = $this->request->getPost('search')['value'];
+            $where =  $where->like('note', $search);
+            $totalFiltered = $where->countAllResults(false);
+        }
+
         $posts = $where->asObject()->orderby("id", "DESC")->paginate($limit, '', $page);
         //echo "<pre>";
         //print_r($posts);

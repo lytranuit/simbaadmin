@@ -56,14 +56,20 @@ class Sale extends BaseController
         $start = $this->request->getVar('start');
         $page = ($start / $limit) + 1;
         $where = $sale_model;
-
-        $totalData = $where->countAllResults();
+        $totalData = $where->countAllResults(false);
         //echo "<pre>";
         //print_r($totalData);
         //die();
-        $totalFiltered = $totalData;
+        if (empty($this->request->getPost('search')['value'])) {
+            //            $max_page = ceil($totalFiltered / $limit);
 
-        $where = $sale_model;
+            $totalFiltered = $totalData;
+        } else {
+            $search = $this->request->getPost('search')['value'];
+            $where =  $where->like('code', $search);
+            $totalFiltered = $where->countAllResults(false);
+        }
+
         $posts = $where->asObject()->orderby("id", "DESC")->paginate($limit, '', $page);
         //echo "<pre>";
         //print_r($posts);

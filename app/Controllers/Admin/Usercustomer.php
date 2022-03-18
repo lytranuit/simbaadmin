@@ -27,7 +27,7 @@ class Usercustomer extends BaseController
             return redirect()->to(base_url('admin/usercustomer'));
         } else {
             //load_editor($this->data);
-            
+
             $CustomerModel = model("CustomerModel");
             $this->data['customers'] = $CustomerModel->findAll();
             return view($this->data['content'], $this->data);
@@ -78,13 +78,20 @@ class Usercustomer extends BaseController
         $page = ($start / $limit) + 1;
         $where = $Usercustomer_model;
 
-        $totalData = $where->countAllResults();
+        $totalData = $where->countAllResults(false);
         //echo "<pre>";
         //print_r($totalData);
         //die();
-        $totalFiltered = $totalData;
+        if (empty($this->request->getPost('search')['value'])) {
+            //            $max_page = ceil($totalFiltered / $limit);
 
-        $where = $Usercustomer_model;
+            $totalFiltered = $totalData;
+        } else {
+            $search = $this->request->getPost('search')['value'];
+            $where =  $where->like('username', $search)->orLike("fullname", $search);
+            $totalFiltered = $where->countAllResults(false);
+        }
+
         $posts = $where->asObject()->orderby("id", "DESC")->paginate($limit, '', $page);
         //echo "<pre>";
         //print_r($posts);
