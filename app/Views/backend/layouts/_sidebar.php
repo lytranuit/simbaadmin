@@ -68,11 +68,32 @@
                         Sản phẩm
                     </a>
                 </li>
+                <li class="app-sidebar__heading">Đơn hàng</li>
+                <li>
+                    <a href="<?= base_url() ?>/admin/sale/" class="">
+                        <i class="metismenu-icon fas fa-shopping-cart"></i>
+                        Đơn hàng online
+                    </a>
+                </li>
                 <li class="app-sidebar__heading">Khách hàng</li>
                 <li>
                     <a href="<?= base_url() ?>/admin/customer/" class="">
                         <i class="metismenu-icon fas fa-user-tie"></i>
                         Khách hàng
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?= base_url() ?>/admin/usercustomer" class="">
+                        <i class="metismenu-icon fas fa-wrench"></i>
+                        Tài khoản
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?= base_url() ?>/admin/userapi" class="">
+                        <i class="metismenu-icon fas fa-wrench"></i>
+                        Tài khoản Api
                     </a>
                 </li>
                 <!-- <li>
@@ -98,6 +119,19 @@
                     </a>
                 </li>
                 <li class="app-sidebar__heading">Cài đặt</li>
+
+                <li>
+                    <a href="<?= base_url() ?>/admin/origin" class="">
+                        <i class="metismenu-icon fas fa-wrench"></i>
+                        Xuất xứ
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= base_url() ?>/admin/email" class="">
+                        <i class="metismenu-icon fas fa-wrench"></i>
+                        Email Mẫu
+                    </a>
+                </li>
                 <li>
                     <a href="<?= base_url() ?>/admin/holiday" class="">
                         <i class="metismenu-icon fas fa-wrench"></i>

@@ -11,7 +11,7 @@ class SaleLineModel extends Model
     protected $primaryKey = 'id';
 
     protected $returnType     = 'App\Entities\SaleLine';
-    protected $useSoftDeletes = true;
+    protected $useSoftDeletes = false;
 
     protected $allowedFields = ['order_id', 'product_id', 'quantity', 'unit_id', 'unit_price', 'subtotal', 'name', 'code', 'image_url', 'status', 'special_unit', 'volume_order', 'volume_order_en', 'volume_order_jp', 'volume'];
 

@@ -3,23 +3,22 @@
 
 <?= $this->section('content') ?>
 <!-- ============================================================== -->
-<!-- saleheader -->
+<!-- pageheader -->
 <!-- ============================================================== -->
 <div class="row clearfix">
     <div class="col-12">
         <section class="card card-fluid">
-
+            <h5 class="card-header drag-handle">
+                <a class="btn btn-success btn-sm" href="<?= base_url("admin/origin/add") ?>">Thêm</a>
+            </h5>
             <div class="card-body">
                 <table id="quanlytin" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th>Mã đơn hàng</th>
-                            <th>Ngày đặt hàng</th>
-                            <th>Ngày giao hàng</th>
-                            <th>Tên khách hàng</th>
-                            <th>Giảm giá</th>
-                            <th>Tổng số tiền</th>
-                            <th>Trạng thái</th>
+                            <th>ID</th>
+                            <th>Tên tiếng việt</th>
+                            <th>Tên tiếng anh</th>
+                            <th>Tên tiếng nhật</th>
                             <th>Hành động</th>
                         </tr>
                     </thead>
@@ -52,7 +51,7 @@
             "processing": true,
             "serverSide": true,
             "ajax": {
-                "url": path + "admin/sale/table",
+                "url": path + "admin/origin/table",
                 "dataType": "json",
                 "type": "POST",
             },
@@ -60,22 +59,13 @@
                     "data": "id"
                 },
                 {
-                    "data": "order_date"
+                    "data": "name_vi"
                 },
                 {
-                    "data": "delivery_date"
+                    "data": "name_en"
                 },
                 {
-                    "data": "customer_name"
-                },
-                {
-                    "data": "discount"
-                },
-                {
-                    "data": "total_amount"
-                },
-                {
-                    "data": "status"
+                    "data": "name_jp"
                 },
                 {
                     "data": "action"

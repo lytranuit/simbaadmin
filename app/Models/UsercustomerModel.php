@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class OriginModel extends Model
+class UsercustomerModel extends Model
 {
-    protected $table      = 'origin_country';
+    protected $table      = 'user';
     protected $primaryKey = 'id';
 
-    protected $returnType     = 'App\Entities\Origin';
+    protected $returnType     = 'App\Entities\Usercustomer';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['name_vi', 'name_en', 'name_jp', 'description_vi', 'description_en', 'description_jp'];
+    protected $allowedFields = ['username', 'password', 'role', 'fullname', 'created_date', 'active', 'customer_id', 'token_login'];
 
     //protected $useTimestamps = false;
     //protected $createdField  = 'created_at';

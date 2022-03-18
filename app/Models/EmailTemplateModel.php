@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class OriginModel extends Model
+class EmailTemplate extends Model
 {
-    protected $table      = 'origin_country';
+    protected $table      = 'email_template';
     protected $primaryKey = 'id';
 
-    protected $returnType     = 'App\Entities\Origin';
+    protected $returnType     = 'App\Entities\EmailTemplate';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['name_vi', 'name_en', 'name_jp', 'description_vi', 'description_en', 'description_jp'];
+    protected $allowedFields = ['name', 'type', 'subject', 'content'];
 
     //protected $useTimestamps = false;
     //protected $createdField  = 'created_at';

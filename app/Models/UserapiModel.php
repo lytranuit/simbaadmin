@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class OriginModel extends Model
+class UserapiModel extends Model
 {
-    protected $table      = 'origin_country';
+    protected $table      = 'user_api';
     protected $primaryKey = 'id';
 
-    protected $returnType     = 'App\Entities\Origin';
+    protected $returnType     = 'App\Entities\Userapi';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['name_vi', 'name_en', 'name_jp', 'description_vi', 'description_en', 'description_jp'];
+    protected $allowedFields = ['api_key', 'api_token'];
 
     //protected $useTimestamps = false;
     //protected $createdField  = 'created_at';

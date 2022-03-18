@@ -29,13 +29,13 @@ class Sale extends BaseController
             $product_model = model("ProductModel");
             $tin = $sale_model->where(array('id' => $id))->asObject()->first();
             $tin->details = $sale_line_model->where(array('order_id' => $tin->id))->asObject()->findAll();
-            foreach ($tin->details as &$row) {
-                $row->product = $product_model->where(array('id' => $row->product_id))->asObject()->first();
-                $product_model->relation($row->product, array("image"));
-            }
-            //echo "<pre>";
-            //print_r($tin);
-            //die();
+            // foreach ($tin->details as &$row) {
+            //     $row->product = $product_model->where(array('id' => $row->product_id))->asObject()->first();
+            //     $product_model->relation($row->product, array("image"));
+            // }
+            // echo "<pre>";
+            // print_r($tin->details);
+            // die();
             $this->data['tin'] = $tin;
             return view($this->data['content'], $this->data);
         }
@@ -68,15 +68,37 @@ class Sale extends BaseController
         //echo "<pre>";
         //print_r($posts);
         //die();
+
         $data = array();
         if (!empty($posts)) {
             foreach ($posts as $post) {
                 $nestedData['id'] = $post->code;
                 $nestedData['order_date'] = $post->order_date;
-                $nestedData['customer_name'] = $post->name;
-                $nestedData['customer_phone'] = $post->phone;
-                $nestedData['customer_address'] = $post->address;
-                $nestedData['total_amount'] = number_format($post->total_amount, 0, ".", ",");
+                $nestedData['delivery_date'] = $post->delivery_date;
+                $nestedData['customer_name'] = $post->customer_name;
+                $nestedData['discount'] = $post->discount;
+                $nestedData['total_amount'] = "<b>" . number_format($post->total_amount, 0, ".", ",") . "</b>";
+                $nestedData['status'] = "Mới đặt hàng";
+                switch ($post->status) {
+                    case 1:
+                        $nestedData['status'] = "Mới đặt hàng";
+                        break;
+                    case 2:
+                        $nestedData['status'] = "Đã xác nhận, chờ giao";
+                        break;
+                    case 3:
+                        $nestedData['status'] = "Đã thanh toán";
+                        break;
+                    case 4:
+                        $nestedData['status'] = "Hoàn tất giao hàng";
+                        break;
+                    case 5:
+                        $nestedData['status'] = "Đã hủy";
+                        break;
+                    case 8:
+                        $nestedData['status'] = "Đang giao hàng";
+                        break;
+                }
                 $nestedData['action'] = '<a href="' . base_url("admin/sale/edit/" . $post->id) . '" class="btn btn-warning btn-sm mr-2" title="edit">'
                     . '<i class="fas fa-pencil-alt">'
                     . '</i>'
