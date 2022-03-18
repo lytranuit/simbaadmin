@@ -8,7 +8,9 @@ class Slider extends BaseController
 {
 
     public function index()
-    {
+    { // load_datatable($this->data);
+        $SliderModel = model("SliderModel");
+        $this->data['slider'] = $SliderModel->orderby('order', "ASC")->findAll();
         return view($this->data['content'], $this->data);
     }
 
@@ -111,5 +113,19 @@ class Slider extends BaseController
         );
 
         echo json_encode($json_data);
+    }
+    public function saveorder()
+    {
+        $SliderModel = model("SliderModel");
+        $data = json_decode($this->request->getPost('data'), true);
+        foreach ($data as $key => $row) {
+            if (isset($row['id'])) {
+                $id = $row['id'];
+                $array = array(
+                    'order' => $key
+                );
+                $SliderModel->update($id, $array);
+            }
+        }
     }
 }

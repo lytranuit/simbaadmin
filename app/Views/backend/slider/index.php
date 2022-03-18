@@ -12,62 +12,68 @@
                 <a class="btn btn-success btn-sm" href="<?= base_url("admin/slider/add") ?>">Thêm</a>
             </h5>
             <div class="card-body">
-                <table id="quanlytin" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Image</th>
-                            <th>Thứ tự</th>
-                            <th>Hành động</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <div class="dd" id="nestable2">
+                    <ol class="dd-list ui-sortable" id="nestable">
+                        <?php foreach ($slider as $row) : ?>
+                            <li class="dd-item ui-sortable-handle" id="menuItem_<?= $row->id ?>" data-id="<?= $row->id ?>">
+                                <div class="dd-handle">
+                                    <div>
+                                        <a href="<?= base_url("admin/slider/edit/" . $row->id) ?>">Slider #ID<?= $row->id ?></a>
+                                        <img src="<?= "https://simbaeshop.com" . $row->image_url ?>" width="100" />
+                                    </div>
+                                    <div class="dd-nodrag btn-group ml-auto">
+                                        <button class="btn btn-sm btn-outline-light dd-item-delete">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        <?php endforeach ?>
+                    </ol>
 
-                    </tbody>
-                </table>
+                </div>
             </div>
         </section>
     </div>
 </div>
 
 <?= $this->endSection() ?>
+
 <!-- Style --->
 <?= $this->section("style") ?>
 
-<link rel="stylesheet" href="<?= base_url("assets/lib/datatables/datatables.min.css") ?> " ?>
+<link rel="stylesheet" href="<?= base_url("assets/lib/sortable/sortable.css") ?> " ?>
 <?= $this->endSection() ?>
 
 <!-- Script --->
 <?= $this->section('script') ?>
 
-<script src="<?= base_url('assets/lib/datatables/datatables.min.js') ?>"></script>
-<script src="<?= base_url('assets/lib/datatables/jquery.highlight.js') ?>"></script>
-
+<script src="<?= base_url("assets/lib/sortable/jquery.mjs.nestedSortable.js") ?>"></script>
 <script type="text/javascript">
+    var controller = '<?= $controller ?>';
     $(document).ready(function() {
-        $('#quanlytin').DataTable({
-            "stateSave": true,
-            "processing": true,
-            "serverSide": true,
-            "ajax": {
-                "url": path + "admin/slider/table",
-                "dataType": "json",
-                "type": "POST",
-            },
-            "columns": [{
-                    "data": "id"
-                },
-                {
-                    "data": "image"
-                },
-                {
-                    "data": "order"
-                },
-                {
-                    "data": "action"
-                }
-            ]
+        $('#nestable').nestedSortable({
+            forcePlaceholderSize: true,
+            items: 'li',
+            opacity: .6,
+            maxLevels: 1,
+            placeholder: 'dd-placeholder',
+        });
+        $("#save").click(function() {
+            var arraied = $('#nestable').nestedSortable('toArray', {
+                excludeRoot: true
+            });
 
+            $.ajax({
+                type: "POST",
+                data: {
+                    data: JSON.stringify(arraied)
+                },
+                url: path + `admin/${controller}/saveorder`,
+                success: function(msg) {
+                    alert("Success!");
+                }
+            })
         });
     });
 </script>
