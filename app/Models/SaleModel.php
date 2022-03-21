@@ -13,7 +13,7 @@ class SaleModel extends Model
     protected $returnType     = 'App\Entities\Sale';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['code', 'address_id', 'order_date', 'customer_name', 'customer_phone', 'customer_email', 'customer_address', 'receiver_name', 'receiver_phone', 'receiver_email', 'receiver_address', 'receiver_area', 'inv_tax_code', 'inv_name', 'inv_address', 'customer_id', 'amount', 'discount', 'service_fee', 'total_amount', 'paid_amount', 'notes', 'status', 'payment_type', 'delivery_date', 'type', 'region', 'language', 'user_id', 'is_send'];
+    protected $allowedFields = ['deleted', 'code', 'address_id', 'order_date', 'customer_name', 'customer_phone', 'customer_email', 'customer_address', 'receiver_name', 'receiver_phone', 'receiver_email', 'receiver_address', 'receiver_area', 'inv_tax_code', 'inv_name', 'inv_address', 'customer_id', 'amount', 'discount', 'service_fee', 'total_amount', 'paid_amount', 'notes', 'status', 'payment_type', 'delivery_date', 'type', 'region', 'language', 'user_id', 'is_send'];
 
 
     public function relation(&$data, $relation = array())
