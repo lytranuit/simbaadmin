@@ -44,7 +44,7 @@ class Sale extends BaseController
     public function remove($id)
     { /////// trang ca nhan
         $sale_model = model("SaleModel");
-        $sale_model->delete($id);
+        $sale_model->update($id, array("deleted", 1));
         header('Location: ' . $_SERVER['HTTP_REFERER']);
         exit;
     }
@@ -57,7 +57,7 @@ class Sale extends BaseController
         $search_type = $this->request->getPost('search_type');
         $search_status = $this->request->getPost('search_status');
         $page = ($start / $limit) + 1;
-        $where = $sale_model;
+        $where = $sale_model->where("deleted", 0);
         $totalData = $where->countAllResults(false);
         //echo "<pre>";
         //print_r($totalData);
