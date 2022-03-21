@@ -44,7 +44,7 @@ class Sale extends BaseController
     public function remove($id)
     { /////// trang ca nhan
         $sale_model = model("SaleModel");
-        $sale_model->update($id, array("deleted", 1));
+        $sale_model->update($id, array("deleted" => 1));
         header('Location: ' . $_SERVER['HTTP_REFERER']);
         exit;
     }
