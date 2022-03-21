@@ -47,8 +47,7 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        let list_status = <?= json_encode($status) ?>;
-        $('#quanlytin').DataTable({
+        let table = $('#quanlytin').DataTable({
             "stateSave": true,
             "processing": true,
             "serverSide": true,
@@ -97,11 +96,9 @@
                 }
             ],
             initComplete: function() {
-                $(".dataTables_filter label").prepend("<select style='margin-right: 0.5em;display: inline-block;width: auto;' class='form-control form-control-sm search_type'><option value='id'>ID</option><option value='code'>Mã đơn hàng</option><option value='status'>Trạng thái</option><option value='description_vi'>Ghi chú</option></select>");
+                $(".dataTables_filter label").prepend("<select style='margin-right: 0.5em;display: inline-block;width: auto;' class='form-control form-control-sm search_type'><option value='code'>Mã đơn hàng</option><option value='status'>Trạng thái</option></select>");
                 $(".dataTables_filter label").append("<select style='margin-left: 0.5em;display: inline-block;width: auto;' class='form-control form-control-sm search_status d-none'></select>");
                 let html = "";
-
-                html += "<option value='-1'>-- Select --</option>";
                 html += "<option value='1'>Mới đặt hàng</option>";
                 html += "<option value='2'>Đã xác nhận, chờ giao</option>";
                 html += "<option value='8'>Đang giao hàng</option>";
@@ -131,6 +128,25 @@
 
             }
 
+        });
+
+        $(document).on("change", ".search_type", function() {
+            let search_type = $(this).val();
+            localStorage.setItem('SEARCH_TYPE', search_type);
+            if (search_type == "status") {
+                $(".search_status").removeClass("d-none");
+                $(".dataTables_filter label input").addClass("d-none");
+            } else {
+                $(".search_status").addClass("d-none");
+                $(".dataTables_filter label input").removeClass("d-none");
+            }
+            table.ajax.reload();
+        });
+
+        $(document).on("change", ".search_status", function() {
+            let search_status = $(this).val();
+            localStorage.setItem('SEARCH_STATUS', search_status);
+            table.ajax.reload();
         });
     });
 </script>

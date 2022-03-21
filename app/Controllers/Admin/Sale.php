@@ -54,6 +54,8 @@ class Sale extends BaseController
         $sale_model = model("SaleModel");
         $limit = $this->request->getVar('length');
         $start = $this->request->getVar('start');
+        $search_type = $this->request->getPost('search_type');
+        $search_status = $this->request->getPost('search_status');
         $page = ($start / $limit) + 1;
         $where = $sale_model;
         $totalData = $where->countAllResults(false);
@@ -70,6 +72,41 @@ class Sale extends BaseController
             $totalFiltered = $where->countAllResults(false);
         }
 
+        if ($search_type == "status" && $search_status != "") {
+            $where->where("status", $search_status);
+            $totalFiltered = $where->countAllResults(false);
+        } elseif (empty($search)) {
+            // $where = $Document_model;
+            // echo "1";die();
+        } elseif ($search_type == "code") {
+            $where->like("code", $search, "after");
+            $totalFiltered = $where->countAllResults(false);
+        } elseif ($search_type == "") {
+            $where->like("code", $search, "after");
+            // $where->orLike("name_vi", $search);
+            $totalFiltered = $where->countAllResults(false);
+        } else {
+            $where->like($search_type, $search);
+            $totalFiltered = $where->countAllResults(false);
+        }
+
+        if (isset($orders)) {
+            foreach ($orders as $order) {
+                $data = $order['data'];
+                $dir = $order['dir'];
+                switch ($data) {
+                    default:
+                        $where->orderby($data, $dir);
+                        break;
+                    case 'status':
+                        $where->orderby('status_id', $dir);
+                        break;
+                    case 'type':
+                        $where->orderby('type_id', $dir);
+                        break;
+                }
+            }
+        }
         $posts = $where->asObject()->orderby("id", "DESC")->paginate($limit, '', $page);
         //echo "<pre>";
         //print_r($posts);
