@@ -70,6 +70,15 @@ class Usercustomer extends BaseController
         exit;
     }
 
+    public function changepassword()
+    { /////// trang ca nhan
+        $UsercustomerModel = model("UsercustomerModel");
+
+        $data = $this->request->getPost();
+        $id = $data['id'];
+        $UsercustomerModel->update($id, array("password" => md5($data['password'])));
+        echo json_encode(array("code" => 400, "msg" => "Thay đổi mật khẩu thành công"));
+    }
     public function table()
     {
         $Usercustomer_model = model("UsercustomerModel");

@@ -39,6 +39,20 @@ class UserModel extends Model
      */
     protected $assignGroup;
 
+    function create_object($data)
+    {
+        $db = $this->db;
+        $array = $db->getFieldNames($this->table);
+        $obj = array();
+        foreach ($array as $key) {
+            if (isset($data[$key])) {
+                $obj[$key] = $data[$key];
+            } else
+                continue;
+        }
+
+        return $obj;
+    }
     /**
      * Logs a password reset attempt for posterity sake.
      *

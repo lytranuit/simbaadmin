@@ -11,6 +11,8 @@
             <section class="card card-fluid">
                 <h5 class="card-header">
                     <div class="d-inline-block w-100">
+                        <a href="#" data-target="#password-modal" data-toggle="modal" class="btn btn-sm btn-primary float-left">Đổi mật khẩu</a>
+
                         <button type="submit" name="dangtin" class="btn btn-sm btn-primary float-right">Save</button>
                     </div>
                 </h5>
@@ -65,12 +67,46 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            
+
                         </div>
                     </div>
                 </div>
             </section>
         </form>
+    </div>
+</div>
+<!-- THAY DOI MAT KHAU Modal-->
+<div aria-hidden="true" aria-labelledby="password-modalLabel" class="modal fade" id="password-modal" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="comment-modalLabel">
+                    <?= lang("Custom.thay_doi_password") ?>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="main">
+                    <!--<p>Sign up once and watch any of our free demos.</p>-->
+                    <form id="form-password">
+                        <?= csrf_field() ?>
+                        <input type="hidden" name="id" value="<?= $tin->id ?>" />
+                        <div class="form-group">
+                            <b class="form-label"><?= lang("Custom.change_password_new_password_label") ?></b>
+                            <div class="form-line">
+                                <input type="password" id="password" class="form-control form-control-sm" name="password" minlength="6" required="" aria-required="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <b class="form-label"><?= lang("Custom.change_password_new_password_confirm_label") ?></b>
+                            <div class="form-line">
+                                <input type="password" class="form-control form-control-sm" name="confirmpassword" minlength="6" data-rule-equalTo="#password" required="" aria-required="true">
+                            </div>
+                        </div>
+                        <button class="btn btn-primary waves-effect" type="submit" name="edit_password"><?= lang("Custom.change_password_submit_btn") ?></button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -122,6 +158,37 @@
                 form.submit();
                 return false;
             }
+        });
+        $("#form-password").validate({
+            highlight: function(input) {
+                $(input).parents('.form-line').addClass('error');
+            },
+            unhighlight: function(input) {
+                $(input).parents('.form-line').removeClass('error');
+            },
+            errorPlacement: function(error, element) {
+                $(element).parents('.form-group').append(error);
+            },
+            submitHandler: function(form) {
+                form.submit();
+                return false;
+            }
+        });
+        $("button[name='edit_password']").click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: path + "admin/usercustomer/changepassword",
+                data: $("#form-password").serialize(),
+                dataType: "JSON",
+                type: "POST",
+                success: function(data) {
+                    alert(data.msg);
+                    if (data.code == 400) {
+                        location.reload();
+                    }
+                }
+            });
+            return false;
         });
     });
 </script>
