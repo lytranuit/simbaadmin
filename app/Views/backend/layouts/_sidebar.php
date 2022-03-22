@@ -122,20 +122,20 @@
 
                 <li>
                     <a href="<?= base_url() ?>/admin/origin" class="">
-                        <i class="metismenu-icon fas fa-wrench"></i>
+                        <i class="metismenu-icon fas fa-flag"></i>
                         Xuất xứ
                     </a>
                 </li>
                 <li>
                     <a href="<?= base_url() ?>/admin/email" class="">
-                        <i class="metismenu-icon fas fa-wrench"></i>
-                        Email Mẫu
+                        <i class="metismenu-icon fas fa-envelope"></i>
+                        Email mẫu
                     </a>
                 </li>
                 <li>
                     <a href="<?= base_url() ?>/admin/holiday" class="">
                         <i class="metismenu-icon fas fa-wrench"></i>
-                        Ngày nghĩ
+                        Ngày nghỉ
                     </a>
                 </li>
                 <li>
