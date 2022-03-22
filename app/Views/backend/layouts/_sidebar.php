@@ -85,14 +85,14 @@
 
                 <li>
                     <a href="<?= base_url() ?>/admin/usercustomer" class="">
-                        <i class="metismenu-icon fas fa-wrench"></i>
+                        <i class="metismenu-icon fas fa-user"></i>
                         Tài khoản
                     </a>
                 </li>
 
                 <li>
                     <a href="<?= base_url() ?>/admin/userapi" class="">
-                        <i class="metismenu-icon fas fa-wrench"></i>
+                        <i class="metismenu-icon fas fa-users"></i>
                         Tài khoản Api
                     </a>
                 </li>
@@ -134,7 +134,7 @@
                 </li>
                 <li>
                     <a href="<?= base_url() ?>/admin/holiday" class="">
-                        <i class="metismenu-icon fas fa-wrench"></i>
+                        <i class="metismenu-icon fas fa-candy-cane"></i>
                         Ngày nghỉ
                     </a>
                 </li>
