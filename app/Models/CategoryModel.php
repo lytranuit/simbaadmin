@@ -87,6 +87,18 @@ class CategoryModel extends Model
 
         return $obj;
     }
+    function get_child_list($parent_id)
+    {
+        $list = array();
+        $children =  $this->where("parent_id", $parent_id)->findAll();
+        foreach ($children as $row) {
+            $id = $row->id;
+            $list[] = $id;
+            $child = $this->get_child_list($id);
+            $list = array_merge($list, $child);
+        }
+        return $list;
+    }
     //protected $useTimestamps = false;
     //protected $createdField  = 'created_at';
     //protected $updatedField  = 'updated_at';

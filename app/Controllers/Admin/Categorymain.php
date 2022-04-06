@@ -48,6 +48,7 @@ class Categorymain extends BaseController
             $product_category_model = model("ProductCategoryModel");
             $data = $this->request->getPost();
 
+
             $obj = $Category_model->create_object($data);
             // print_r($obj);die();
             $Category_model->update($id, $obj);
@@ -59,6 +60,23 @@ class Categorymain extends BaseController
                     );
                     $product_category_model->update($row, $data_up);
                 }
+            }
+            ////UPDATE CHILD
+            if (isset($data['is_b2b']) || isset($data['is_b2c'])) {
+                $update = array();
+                if (isset($data['is_b2b'])) {
+                    $update['is_b2b'] = $data['is_b2b'];
+                }
+                if (isset($data['is_b2c'])) {
+                    $update['is_b2c'] = $data['is_b2c'];
+                }
+                if (!empty($update)) {
+                    $children = $Category_model->get_child_list($id);
+                    $Category_model->update($children, $update);
+                }
+                // echo "<pre>";
+                // print_r($child);
+                // die();
             }
             return redirect()->to(base_url('admin/' . $this->data['controller']));
         } else {
