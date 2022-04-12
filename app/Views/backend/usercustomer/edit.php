@@ -44,8 +44,8 @@
                             </div>
                             <div class="form-group row">
                                 <b class="col-12 col-lg-2 col-form-label">Customer:</b>
-                                <div class="col-lg-4 pt-1">
-                                    <select name="customer_id" class="form-control form-control-sm">
+                                <div class="col-lg-10 pt-1">
+                                    <select name="customer_id" class="chosen form-control form-control-sm">
                                         <?php foreach ($customers as $row) : ?>
                                             <option value="<?= $row->id ?>"><?= $row->code . " - " . $row->name ?></option>
                                         <?php endforeach ?>
@@ -116,10 +116,12 @@
 <!-- Script --->
 <?= $this->section('style') ?>
 
+<link rel="stylesheet" href="<?= base_url("assets/lib/chosen/chosen.min.css") ?> " ?>
 <?= $this->endSection() ?>
 <!-- Script --->
 <?= $this->section('script') ?>
 
+<script src="<?= base_url("assets/lib/chosen/chosen.jquery.js") ?>"></script>
 <script type='text/javascript'>
     var tin = <?= json_encode($tin) ?>;
     fillForm($("#form-dang-tin"), tin);
@@ -136,6 +138,8 @@
         //    imageAllowedTypes: ['jpeg', 'jpg', 'png', 'gif'],
         //    htmlRemoveTags: [],
         //});
+        
+        $(".chosen").chosen();
         $.validator.setDefaults({
             debug: true,
             success: "valid"
