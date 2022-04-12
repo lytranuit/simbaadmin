@@ -64,7 +64,7 @@
                             </div>
                             <div class="form-group row">
                                 <b class="col-12 col-lg-2 col-form-label">Active:</b>
-                                <div class="col-12 col-lg-8 pt-1">
+                                <div class="col-12 col-lg-10 pt-1">
                                     <div class="switch-button switch-button-success">
                                         <input type="hidden" name="active" value="0" class="input-tmp">
                                         <input type="checkbox" checked="" name="active" id="switch19" value="1">
