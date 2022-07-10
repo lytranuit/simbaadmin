@@ -179,6 +179,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#menu8">Rượu</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#menu9">Sản phẩm thay thế</a>
+                                </li>
                             </ul>
                             <!-- Tab panes -->
                             <div class="tab-content">
@@ -345,6 +348,19 @@
                                                     </table>
                                                 </div>
                                             </section>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="menu9" class=" tab-pane fade">
+                                    <div class="row clearfix">
+                                        <div class="col-12">
+                                            <select class="chosen product_replace" multiple name='product_replace[]'>
+                                                <?php foreach ($products_add as $row) : ?>
+                                                    <option value="<?= $row->id ?>">
+                                                        <?= $row->code ?> - <?= $row->name_vi ?>
+                                                    </option>
+                                                <?php endforeach ?>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>

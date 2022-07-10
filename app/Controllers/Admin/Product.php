@@ -23,6 +23,8 @@ class Product extends BaseController
             $ProductExt_model = model("ProductExtModel");
             $Product_category_model = model("ProductCategoryModel");
             $Product_image_model = model("ProductImageModel");
+            $Product_replace_model = model("ProductReplaceModel");
+
             $data = $this->request->getPost();
             // echo "<pre>";
             // print_r($data);
@@ -170,7 +172,22 @@ class Product extends BaseController
                 }
                 // die();
             }
-
+            /*
+             * Sản phẩm thay thế
+             */
+            // print_r($data['product_replace']);
+            // die();
+            $Product_replace_model->where(array('product_id' => $id))->delete();
+            if (isset($data['product_replace'])) {
+                foreach ($data['product_replace'] as $row) {
+                    $array = array(
+                        'product_id' => $id,
+                        'replace_id' => $row
+                    );
+                    $Product_replace_model->insert($array);
+                }
+                // die();
+            }
 
             return redirect()->to(base_url('admin/product'));
         } else {
@@ -182,7 +199,7 @@ class Product extends BaseController
             $Product_category_model = model("ProductCategoryModel");
             $Product_related_model = model("ProductRelatedModel");
             $tin = $Product_model->where(array('id' => $id))->asObject()->first();
-            $Product_model->relation($tin, array('image_other', 'units', 'ProductExt', 'forCustomers'));
+            $Product_model->relation($tin, array('image_other', 'units', 'ProductExt', 'forCustomers', 'product_replace'));
             // echo "<pre>";
             // print_r($tin);
             // die();
@@ -201,6 +218,14 @@ class Product extends BaseController
                     $cate_id[] = $cate['category_id'];
                 }
                 $tin->category_list = $cate_id;
+            }
+            
+            if (!empty($tin->product_replace)) {
+                $replace_id = array();
+                foreach ($tin->product_replace as $key => $pro) {
+                    $replace_id[] = $pro->replace_id;
+                }
+                $tin->product_replace = $replace_id;
             }
             if (!empty($tin->forCustomers)) {
                 $customer_id = array();
@@ -248,6 +273,9 @@ class Product extends BaseController
             $this->data['category2'] = html_product_category_nestable($this->data['category2'], 'parent_id', 0);
 
             $this->data['customers'] = $tin->forCustomers;
+
+            $this->data['products_add'] = $Product_model->where(array("status" => 1))->asObject()->findAll();
+
             // echo "<pre>";
             // print_r($this->data['customers']);
             // die();
