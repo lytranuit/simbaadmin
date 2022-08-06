@@ -63,22 +63,22 @@ class Categoryhome extends BaseController
             }
 
             ////UPDATE CHILD
-            if (isset($data['is_b2b']) || isset($data['is_b2c'])) {
-                $update = array();
-                if (isset($data['is_b2b'])) {
-                    $update['is_b2b'] = $data['is_b2b'];
-                }
-                if (isset($data['is_b2c'])) {
-                    $update['is_b2c'] = $data['is_b2c'];
-                }
-                if (!empty($update)) {
-                    $children = $Category_model->get_child_list($id);
-                    $Category_model->update($children, $update);
-                }
-                // echo "<pre>";
-                // print_r($child);
-                // die();
-            }
+            // if (isset($data['is_b2b']) || isset($data['is_b2c'])) {
+            //     $update = array();
+            //     if (isset($data['is_b2b'])) {
+            //         $update['is_b2b'] = $data['is_b2b'];
+            //     }
+            //     if (isset($data['is_b2c'])) {
+            //         $update['is_b2c'] = $data['is_b2c'];
+            //     }
+            //     if (!empty($update)) {
+            //         $children = $Category_model->get_child_list($id);
+            //         $Category_model->update($children, $update);
+            //     }
+            //     // echo "<pre>";
+            //     // print_r($child);
+            //     // die();
+            // }
             return redirect()->to(base_url('admin/' . $this->data['controller']));
         } else {
             $Category_model = model("CategoryModel");
