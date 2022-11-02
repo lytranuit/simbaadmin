@@ -90,7 +90,7 @@
                                         <tbody>
                                             <?php foreach ($tin->details as $row) : ?>
                                                 <tr data-id='<?= $row->product_id ?> ' data-price='<?= $row->unit_price ?>'>
-                                                    <td><img src='<?= "https://simbaeshop.com" .  $row->image_url ?>' width="100" /></td>
+                                                    <td><img src='<?= config('App')->simbaURL  .  $row->image_url ?>' width="100" /></td>
                                                     <td><?= $row->name ?></td>
                                                     <td><?= $row->code ?></td>
                                                     <td><?= number_format($row->unit_price, 0, ",", ".") ?></td>

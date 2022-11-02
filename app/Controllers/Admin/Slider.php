@@ -91,7 +91,7 @@ class Slider extends BaseController
             foreach ($posts as $post) {
                 $nestedData['id'] = $post->id;
                 $nestedData['order'] = $post->order;
-                $nestedData['image'] = "<img src='http://simbaeshop.com$post->image_url' width='100'/>";
+                $nestedData['image'] = "<img src='" . config('App')->simbaURL . "$post->image_url' width='100'/>";
                 $nestedData['action'] = '<a href="' . base_url("admin/slider/edit/" . $post->id) . '" class="btn btn-warning btn-sm mr-2" title="edit">'
                     . '<i class="fas fa-pencil-alt">'
                     . '</i>'

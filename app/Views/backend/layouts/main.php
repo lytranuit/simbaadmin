@@ -27,7 +27,8 @@
     <?= $this->renderSection('style') ?>
     <script>
         var path = '<?= base_url() ?>/';
-        var replacepath = ["../eshop", "https://simbaeshop.com"];
+
+        var replacepath = ['<?= config('App')->uploadForlder ?>', '<?= config('App')->simbaURL ?>'];
     </script>
 
 </head>
