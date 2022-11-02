@@ -22,7 +22,7 @@
                                 <div class="dd-handle">
                                     <div>
                                         <a href="<?= base_url("admin/slider/edit/" . $row->id) ?>">Slider #ID<?= $row->id ?></a>
-                                        <img src="<?= "https://simbaeshop.com" . $row->image_url ?>" width="100" />
+                                        <img src="<?= config('App')->simbaURL . $row->image_url ?>" width="100" />
                                     </div>
                                     <div class="dd-nodrag btn-group ml-auto">
                                         <button class="btn btn-sm btn-outline-light dd-item-delete">

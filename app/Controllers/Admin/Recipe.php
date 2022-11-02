@@ -180,7 +180,7 @@ class Recipe extends BaseController
             foreach ($posts as $post) {
                 $nestedData['id'] = '<a href="' . base_url("admin/recipe/edit/" . $post->id) . '">' . $post->id . '</a>';
                 $nestedData['name_vi'] = $post->name_vi;
-                $nestedData['image'] = "<img src='https://simbaeshop.com$post->image_url' width='100'/>";
+                $nestedData['image'] = "<img src='" . config('App')->simbaURL . "$post->image_url' width='100'/>";
 
                 $nestedData['content_vi'] = split_string($post->content_vi, 100);
                 // $image = isset($post->image->src) ? base_url() . $post->image->src : "";

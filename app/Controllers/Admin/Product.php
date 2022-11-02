@@ -219,7 +219,7 @@ class Product extends BaseController
                 }
                 $tin->category_list = $cate_id;
             }
-            
+
             if (!empty($tin->product_replace)) {
                 $replace_id = array();
                 foreach ($tin->product_replace as $key => $pro) {
@@ -381,7 +381,7 @@ class Product extends BaseController
                     . '</a>';
                 $nestedData['code'] = $post->code;
                 $nestedData['name_vi'] = $post->name_vi;
-                $image = "https://simbaeshop.com/$post->image_url";
+                $image = config('App')->simbaURL . "$post->image_url";
                 $nestedData['image'] = "<img src='$image' width='100'/>";
                 // $nestedData['active'] = $post->status == 1 ? '<i class="text-success far fa-check-circle"></i>' : '<i class="text-danger far fa-times-circle"></i>';
                 // $nestedData['active'] = '<div class="text-center">' . $nestedData['active'] . '</div>';
