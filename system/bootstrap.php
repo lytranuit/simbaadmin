@@ -115,7 +115,6 @@ require_once SYSTEMPATH . 'Common.php';
  * in the framework. We have to load it here, though, so
  * that the config files can use the path constants.
  */
-
 if (! class_exists(Config\Autoload::class, false))
 {
 	require_once SYSTEMPATH . 'Config/AutoloadConfig.php';
@@ -178,6 +177,7 @@ helper('url');
 
 $appConfig = config(\Config\App::class);
 $app       = new \CodeIgniter\CodeIgniter($appConfig);
+
 $app->initialize();
 
 return $app;

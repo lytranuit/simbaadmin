@@ -27,7 +27,7 @@
     <?= $this->renderSection('style') ?>
     <script>
         var path = '<?= base_url() ?>/';
-        var replacepath = ["../eshop", "https://simbaeshop.com"];
+        var replacepath = ["../../public_html", "https://simba-eshop.my"];
     </script>
 
 </head>

@@ -182,7 +182,6 @@ class CodeIgniter
 	{
 		// Set default locale on the server
 		locale_set_default($this->config->defaultLocale ?? 'en');
-
 		// Set default timezone on the server
 		date_default_timezone_set($this->config->appTimezone ?? 'UTC');
 
@@ -193,7 +192,6 @@ class CodeIgniter
 		// Setup Exception Handling
 		Services::exceptions()
 				->initialize();
-
 		$this->initializeKint();
 
 		if (! CI_DEBUG)
