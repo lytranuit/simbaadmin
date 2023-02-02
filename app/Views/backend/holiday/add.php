@@ -27,6 +27,14 @@
                                         </span>
                                     </div>
                                 </div>
+                                <b class="col-12 col-lg-2 col-form-label">Chi nhánh:</b>
+                                <div class="col-12 col-lg-4 pt-1">
+                                    <select name="branchs[]" style="width: 100%;" multiple="">
+                                        <?php foreach ($branchs as $row) : ?>
+                                            <option value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                </div>
                             </div>
                             <div class="form-group row">
                                 <b class="col-12 col-lg-2 col-form-label">Tên:</b>
@@ -38,12 +46,12 @@
                                     <input class="form-control form-control-sm" type='date' name="holiday" />
                                 </div>
                             </div>
-                           
+
                         </div>
 
 
                         <div class="col-md-4">
-                           
+
                         </div>
                     </div>
                 </div>
@@ -55,12 +63,18 @@
 <?= $this->endSection() ?>
 
 
+<?= $this->section('style') ?>
+
+<link rel="stylesheet" href="<?= base_url("assets/lib/chosen/chosen.min.css") ?> " ?>
+<?= $this->endSection() ?>
 <!-- Script --->
 <?= $this->section('script') ?>
 <script src="<?= base_url("assets/lib/mustache/mustache.min.js") ?>"></script>
+<script src="<?= base_url("assets/lib/chosen/chosen.jquery.js") ?>"></script>
 
 <script type='text/javascript'>
     $(document).ready(function() {
+        $("select[name='branchs[]']").chosen();
         //$('.edit').froalaEditor({
         //    heightMin: 200,
         //    heightMax: 500, // Set the image upload URL.

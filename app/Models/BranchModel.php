@@ -2,27 +2,19 @@
 
 namespace App\Models;
 
-
+use CodeIgniter\Database\BaseBuilder;
 use CodeIgniter\Model;
 
-class AreaFeeModel extends Model
+class BranchModel extends Model
 {
-    protected $table      = 'pet_area_fee';
+    protected $table      = 'branch';
     protected $primaryKey = 'id';
 
-    protected $returnType     = 'array';
+    protected $returnType     = 'App\Entities\Branch';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['area_id', 'min', 'max', 'fee'];
+    protected $allowedFields = ['name', 'code'];
 
-    //protected $useTimestamps = false;
-    //protected $createdField  = 'created_at';
-    //protected $updatedField  = 'updated_at';
-    //protected $deletedField  = 'deleted_at';
-
-    //protected $validationRules    = [];
-    //protected $validationMessages = [];
-    protected $skipValidation     = true;
 
     function create_object($data)
     {
@@ -42,4 +34,12 @@ class AreaFeeModel extends Model
 
         return $obj;
     }
+    protected $useTimestamps = false;
+    //protected $createdField  = 'created_at';
+    //protected $updatedField  = 'updated_at';
+    //protected $deletedField  = 'deleted_at';
+
+    //protected $validationRules    = [];
+    //protected $validationMessages = [];
+    protected $skipValidation     = true;
 }

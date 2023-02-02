@@ -20,6 +20,12 @@ class Holiday extends BaseController
             $Holiday_model = model("HolidayModel");
             $data = $this->request->getPost();
             $data['user_id'] = user_id();
+            if (isset($data['branchs'])) {
+                $data['branch_id'] = implode(",", $data['branchs']);
+            }
+            // echo "<pre>";
+            // print_r($data);
+            // die();
             $obj = new \App\Entities\Holiday();
             $obj->fill($data);
             $obj->date = date("Y-m-d H:i:s");
@@ -27,6 +33,10 @@ class Holiday extends BaseController
             return redirect()->to(base_url('admin/holiday'));
         } else {
             //load_editor($this->data);
+
+            $BranchModel = model("BranchModel");
+            $this->data['branchs'] = $BranchModel->where('deleted', 0)->asArray()->findAll();
+
             return view($this->data['content'], $this->data);
         }
     }
@@ -37,6 +47,16 @@ class Holiday extends BaseController
 
             $Holiday_model = model("HolidayModel");
             $data = $this->request->getPost();
+            
+            if (isset($data['branchs'])) {
+                $data['branch_id'] = implode(",", $data['branchs']);
+            }else{
+                $data['branch_id'] = null;
+            }
+            
+            // echo "<pre>";
+            // print_r($data);
+            // die();
             $obj = $Holiday_model->find($id);
             //echo "<pre>";
             //print_r($obj);
@@ -47,12 +67,16 @@ class Holiday extends BaseController
         } else {
             $Holiday_model = model("HolidayModel");
             $tin = $Holiday_model->where(array('id' => $id))->asObject()->first();
+            $tin->branchs = explode(",", $tin->branch_id);
             $this->data['tin'] = $tin;
             //echo "<pre>";
             //print_r($tin);
             //die();
             //load_editor($this->data);
             //            load_chossen($this->data);
+
+            $BranchModel = model("BranchModel");
+            $this->data['branchs'] = $BranchModel->where('deleted', 0)->asArray()->findAll();
             return view($this->data['content'], $this->data);
         }
     }

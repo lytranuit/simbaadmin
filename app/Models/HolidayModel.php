@@ -12,7 +12,7 @@ class HolidayModel extends Model
     protected $returnType     = 'App\Entities\Holiday';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['note', 'active', 'holiday'];
+    protected $allowedFields = ['note', 'active', 'holiday', 'branch_id'];
 
 
     //protected $useTimestamps = false;
