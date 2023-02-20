@@ -13,7 +13,7 @@ class SaleModel extends Model
     protected $returnType     = 'App\Entities\Sale';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['deleted', 'code', 'address_id', 'order_date', 'customer_name', 'customer_phone', 'customer_email', 'customer_address', 'receiver_name', 'receiver_phone', 'receiver_email', 'receiver_address', 'receiver_area', 'inv_tax_code', 'inv_name', 'inv_address', 'customer_id', 'amount', 'discount', 'service_fee', 'total_amount', 'paid_amount', 'notes', 'status', 'payment_type', 'delivery_date', 'type', 'region', 'language', 'user_id', 'is_send'];
+    protected $allowedFields = ['deleted', 'code', 'address_id', 'order_date', 'customer_id', 'customer_name', 'customer_phone', 'customer_email', 'customer_address', 'receiver_name', 'receiver_phone', 'receiver_email', 'receiver_address', 'receiver_area', 'inv_tax_code', 'inv_name', 'inv_address', 'customer_id', 'amount', 'discount', 'service_fee', 'total_amount', 'paid_amount', 'notes', 'status', 'payment_type', 'delivery_date', 'type', 'region', 'language', 'user_id', 'is_send'];
 
 
     public function relation(&$data, $relation = array())
@@ -38,11 +38,21 @@ class SaleModel extends Model
                 $builder = $this->db->table('sale_order_line');
                 $row_a->details = $builder->where('order_id', $order_id)->get()->getResult();
             }
+            if (in_array("customer", $relation)) {
+                $customer_id = $row_a->customer_id;
+                $builder = $this->db->table('customer');
+                $row_a->customer = $builder->where('id', $customer_id)->get()->getFirstRow();
+            }
         } else {
             if (in_array("details", $relation)) {
                 $order_id = $row_a['id'];
                 $builder = $this->db->table('sale_order_line');
                 $row_a['details'] = $builder->where('order_id', $order_id)->get()->getResult("array");
+            }
+            if (in_array("customer", $relation)) {
+                $customer_id = $row_a['customer_id'];
+                $builder = $this->db->table('customer');
+                $row_a['customer'] = $builder->where('id', $customer_id)->get()->getFirstRow("array");
             }
         }
         return $row_a;

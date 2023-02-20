@@ -52,6 +52,7 @@ class Sale extends BaseController
     public function table()
     {
         $sale_model = model("SaleModel");
+        $CustomerModel = model("CustomerModel");
         $limit = $this->request->getVar('length');
         $start = $this->request->getVar('start');
         $search_type = $this->request->getPost('search_type');
@@ -68,8 +69,8 @@ class Sale extends BaseController
             $totalFiltered = $totalData;
         } else {
             $search = $this->request->getPost('search')['value'];
-            $where =  $where->like('code', $search);
-            $totalFiltered = $where->countAllResults(false);
+            // $where =  $where->like('code', $search);
+            // $totalFiltered = $where->countAllResults(false);
         }
 
         if ($search_type == "status" && $search_status != "") {
@@ -80,6 +81,20 @@ class Sale extends BaseController
             // echo "1";die();
         } elseif ($search_type == "code") {
             $where->like("code", $search, "after");
+            $totalFiltered = $where->countAllResults(false);
+        } elseif ($search_type == "customer") {
+            $customer_list = $CustomerModel->like("code", $search, "after")->orLike("name", $search, "after")->asArray()->findAll();
+            // echo "<pre>";
+            // print_r($customer_list);
+            // die();
+            $customer_list = array_map(function ($item) {
+                return $item['id'];
+            },  $customer_list);
+            if (count($customer_list) > 0)
+                $where->whereIn("customer_id", $customer_list);
+            else {
+                $where->where("code", 'timtaolao');
+            }
             $totalFiltered = $where->countAllResults(false);
         } elseif ($search_type == "") {
             $where->like("code", $search, "after");
@@ -107,10 +122,14 @@ class Sale extends BaseController
                 }
             }
         }
+        // echo $where->getCompiledSelect();
+        // die();
         $posts = $where->asObject()->orderby("id", "DESC")->paginate($limit, '', $page);
         //echo "<pre>";
         //print_r($posts);
         //die();
+        $sale_model->relation($posts, array('customer'));
+
 
         $data = array();
         if (!empty($posts)) {
@@ -119,6 +138,9 @@ class Sale extends BaseController
                 $nestedData['order_date'] = $post->order_date;
                 $nestedData['delivery_date'] = $post->delivery_date;
                 $nestedData['customer_name'] = $post->customer_name;
+                if (isset($post->customer->code)) {
+                    $nestedData['customer_name'] = $post->customer->code . " - " . $nestedData['customer_name'];
+                }
                 $nestedData['discount'] = $post->discount;
                 $nestedData['total_amount'] = "<b>" . number_format($post->total_amount, 0, ".", ",") . "</b>";
                 $nestedData['status'] = "Mới đặt hàng";
